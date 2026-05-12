@@ -350,8 +350,29 @@ function setupSubscribeForm() {
   if (!form) return;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    showToast('Köszönjük a feliratkozást!');
-    form.reset();
+    const btn   = form.querySelector('button[type="submit"]');
+    const input = form.querySelector('input[type="email"]');
+    const email = input?.value?.trim();
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = '…';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('Szerverhiba');
+      showToast('Köszönjük a feliratkozást! Értesítünk a fontosabb változásokról.');
+      form.reset();
+    } catch {
+      showToast('Hiba történt — próbáld újra.', true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Feliratkozás';
+    }
   });
 }
 
