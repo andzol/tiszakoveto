@@ -618,6 +618,210 @@ a { color: inherit; text-decoration: none; }
 }
 .empty-state.visible { display: block; }
 
+/* ─── Floating action button ───────────────────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 1.3rem 0 1rem;
+  height: 48px;
+  background: var(--reed-dark);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(26,79,53,0.45);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.fab:hover {
+  background: var(--reed);
+  box-shadow: 0 6px 24px rgba(26,79,53,0.55);
+  transform: translateY(-2px);
+}
+.fab-icon {
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -1px;
+}
+.fab-label { letter-spacing: -0.01em; }
+
+/* ─── Modal overlay ────────────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(13,30,50,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+/* ─── Suggest modal ────────────────────────────────────────────────── */
+.suggest-modal {
+  position: relative;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 2.25rem 2rem 2rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+  animation: modal-in 0.22s ease;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1.1rem;
+  background: none; border: none;
+  font-size: 1.6rem; font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer; line-height: 1;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: var(--text-dark); }
+
+.suggest-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
+}
+.suggest-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  line-height: 1.55;
+}
+
+/* Auth wall */
+#suggest-auth-wall { display: none; }
+#suggest-auth-wall.show { display: block; }
+.suggest-auth-msg {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin-bottom: 1rem;
+}
+.suggest-google-btn { margin: 0; }
+
+/* Form hidden when not logged in */
+#suggest-form { display: none; }
+#suggest-form.show { display: block; }
+
+/* ─── Form fields ──────────────────────────────────────────────────── */
+.form-group { margin-bottom: 1.1rem; }
+
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.01em;
+}
+.req { color: var(--expired-border); margin-left: 1px; }
+.form-optional { font-weight: 400; color: var(--text-muted); font-size: 0.75rem; }
+.form-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; display: block; }
+
+.form-group textarea,
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--parchment);
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+.form-group textarea:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group select:focus {
+  border-color: var(--river-mid);
+  background: var(--white);
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237a95a8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+/* Status toggle */
+.status-toggle {
+  display: flex;
+  gap: 0.6rem;
+}
+.status-option { cursor: pointer; }
+.status-option input { display: none; }
+.status-chip {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.status-option input:checked + .pending-chip {
+  border-color: var(--river-deep);
+  color: var(--river-deep);
+  background: rgba(30,82,120,0.07);
+}
+.status-option input:checked + .done-chip {
+  border-color: var(--done-border);
+  color: var(--done-color);
+  background: var(--done-bg);
+}
+
+/* Submit button */
+.suggest-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background: var(--river-deep);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.925rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.01em;
+}
+.suggest-submit:hover { background: var(--river-dark); }
+.suggest-submit:disabled { opacity: 0.5; cursor: default; }
+
 /* ─── Footer ───────────────────────────────────────────────────────── */
 .footer { background: var(--river-dark); color: var(--text-on-dark-muted); padding: 3.5rem 1.5rem 0; }
 .footer-inner {

@@ -362,3 +362,116 @@ function escHtml(str) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;')
     .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
+
+// ─── Suggest modal ────────────────────────────────────────────────────
+(function setupSuggest() {
+  const DEFAULT_DEADLINE = '2030-03-30';
+
+  const fab      = document.getElementById('fab-suggest');
+  const overlay  = document.getElementById('suggest-overlay');
+  const closeBtn = document.getElementById('suggest-close');
+  const authWall = document.getElementById('suggest-auth-wall');
+  const form     = document.getElementById('suggest-form');
+  const loginBtn = document.getElementById('suggest-login-btn');
+  const isDoneRadios = () => document.querySelectorAll('[name="isdone"]');
+  const donedateGroup = () => document.getElementById('sg-donedate');
+  const deadlineGroup = () => document.getElementById('sg-deadline');
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    refreshAuthState();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    form.reset();
+    // Reset conditional fields
+    donedateGroup().style.display = 'none';
+    deadlineGroup().style.display = '';
+    document.getElementById('sg-donedate').querySelector
+      ? null : null; // just reset
+  }
+
+  function refreshAuthState() {
+    if (currentUser) {
+      authWall.classList.remove('show');
+      form.classList.add('show');
+    } else {
+      authWall.classList.add('show');
+      form.classList.remove('show');
+    }
+  }
+
+  // Open / close
+  fab.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Login from within modal
+  loginBtn?.addEventListener('click', () => {
+    sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin } });
+  });
+
+  // Update auth state when user logs in/out
+  const _origSetUser = setUser;
+  window._suggestAuthRefresh = refreshAuthState;
+
+  // Toggle donedate / deadline fields based on radio
+  document.addEventListener('change', (e) => {
+    if (e.target.name !== 'isdone') return;
+    const isDone = e.target.value === 'true';
+    donedateGroup().style.display = isDone ? '' : 'none';
+    deadlineGroup().style.display = isDone ? 'none' : '';
+    if (isDone) {
+      document.getElementById('s-donedate').required = true;
+    } else {
+      document.getElementById('s-donedate').required = false;
+    }
+  });
+
+  // Form submit
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!currentUser) return;
+
+    const { data: { session } } = await sb.auth.getSession();
+    const accessToken = session?.access_token;
+    if (!accessToken) { showToast('Lejárt a munkamenet, kérjük jelentkezz be újra.', true); return; }
+
+    const btn = document.getElementById('suggest-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Küldés…';
+
+    const data = Object.fromEntries(new FormData(form));
+    const payload = {
+      todo:     data.todo?.trim(),
+      category: data.category,
+      isdone:   data.isdone === 'true',
+      donedate: data.isdone === 'true' ? (data.donedate || null) : null,
+      deadline: data.isdone === 'false' ? (data.deadline || DEFAULT_DEADLINE) : null,
+      source:   data.source?.trim() || null,
+    };
+
+    try {
+      const res = await fetch('/api/suggest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error();
+      closeModal();
+      showToast('Köszönjük! Hamarosan megvizsgáljuk.');
+    } catch {
+      showToast('Hiba küldés közben — próbáld újra.', true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Beküldés';
+    }
+  });
+})();
