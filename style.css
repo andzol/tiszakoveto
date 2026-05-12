@@ -122,7 +122,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-sans);
   font-size: 0.82rem;
   outline: none;
-  width: 185px;
+  width: 155px;
   transition: border-color 0.2s, background 0.2s;
 }
 .subscribe-form input::placeholder { color: rgba(255,255,255,0.32); }
@@ -192,18 +192,19 @@ a { color: inherit; text-decoration: none; }
 .user-info.visible { display: flex; }
 
 .user-avatar {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--reed);
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.2);
 }
 .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -214,6 +215,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: none; /* hidden in navbar — avatar is enough */
 }
 
 .btn-logout {
