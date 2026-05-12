@@ -877,11 +877,16 @@ a { color: inherit; text-decoration: none; }
     flex-wrap: wrap;
     padding: 0.6rem 1rem;
   }
-  /* Logo stays left, nav-actions stays right on row 1 */
-  .logo { flex: 1; }
-  /* Subscribe form drops to its own full-width row 2 */
+  /* Row 1: logo left, nav-actions right */
+  .logo { flex: 1 0 auto; }
+  .nav-actions {
+    flex-wrap: wrap;          /* allow internal wrap on mobile */
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  /* Subscribe form fills its own row 2 inside nav-actions */
   .subscribe-form {
-    order: 10;        /* push after all flex children */
+    order: 10;
     width: 100%;
     height: 36px;
   }
