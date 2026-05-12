@@ -196,12 +196,15 @@ function renderAll(promises) {
 
       const donedateHtml = item.donedate
         ? `<div class="promise-donedate">Teljesítve: ${fmtDate(item.donedate)}</div>` : '';
+      const noteHtml = item.note
+        ? `<p class="promise-note">${escHtml(item.note)}</p>` : '';
 
       li.innerHTML = `
         <div class="promise-row">
           <span class="status-badge ${status}" aria-label="${status === 'done' ? 'Teljesítve' : status === 'expired' ? 'Lejárt' : 'Folyamatban'}">${badgeContent}</span>
           <div class="promise-body">
             <p class="promise-text">${escHtml(item.todo)}</p>
+            ${noteHtml}
             ${donedateHtml}
           </div>
           <button class="comment-toggle" data-id="${item.id}">Megjegyzés</button>

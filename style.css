@@ -528,6 +528,13 @@ a { color: inherit; text-decoration: none; }
 .promise-item.is-done .promise-text    { color: var(--text-mid); }
 .promise-item.is-expired .promise-text { color: var(--expired-color); }
 
+.promise-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
 .promise-donedate {
   font-size: 0.72rem;
   color: var(--done-color);
