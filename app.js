@@ -123,7 +123,7 @@ function renderHighlights(promises) {
     doneList.innerHTML = '<li class="highlight-empty">Még nincs teljesített vállalás.</li>';
   } else {
     doneList.innerHTML = done.map(p => `
-      <li class="highlight-item">
+      <li class="highlight-item" data-promise-id="${p.id}" role="button" tabindex="0" title="Ugrás a vállaláshoz">
         <span class="hi-check">✓</span>
         <span>${escHtml(p.todo)}</span>
       </li>`).join('');
@@ -132,10 +132,17 @@ function renderHighlights(promises) {
   // Right: last 5 by id (most recently added to the tracker)
   const added = [...promises].sort((a, b) => b.id - a.id).slice(0, 5);
   document.getElementById('recently-added').innerHTML = added.map(p => `
-    <li class="highlight-item">
+    <li class="highlight-item" data-promise-id="${p.id}" role="button" tabindex="0" title="Ugrás a vállaláshoz">
       <span class="hi-dot">◆</span>
       <span>${escHtml(p.todo)}</span>
     </li>`).join('');
+
+  // Scroll-to on click
+  document.querySelectorAll('.highlight-item[data-promise-id]').forEach(item => {
+    const activate = () => scrollToPromise(item.dataset.promiseId);
+    item.addEventListener('click', activate);
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') activate(); });
+  });
 }
 
 // ─── Render promises ─────────────────────────────────────────────────
@@ -355,6 +362,28 @@ function showToast(msg, isError = false) {
   toast.style.background = isError ? '#7b1f2e' : '';
   toast.classList.add('visible');
   setTimeout(() => toast.classList.remove('visible'), 3500);
+}
+
+function scrollToPromise(id) {
+  // Make sure "Összes" filter is active so the item is visible
+  const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+  if (allBtn && currentFilter !== 'all') {
+    allBtn.click();
+  }
+
+  const target = document.querySelector(`.promise-item[data-id="${id}"]`);
+  if (!target) return;
+
+  // Offset for sticky navbar + filter bar (~110px)
+  const offset = 120;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+
+  // Flash highlight
+  target.classList.remove('flashing');
+  void target.offsetWidth; // reflow to restart animation
+  target.classList.add('flashing');
+  target.addEventListener('animationend', () => target.classList.remove('flashing'), { once: true });
 }
 
 function escHtml(str) {
