@@ -15,9 +15,23 @@
 </head>
 <body>
 
+  <div class="tricolor-bar" aria-hidden="true">
+    <span class="tc-red"></span>
+    <span class="tc-white"></span>
+    <span class="tc-green"></span>
+  </div>
+
   <nav class="navbar">
     <div class="nav-inner">
-      <a href="/" class="logo">Tisza Követő</a>
+      <a href="/" class="logo">
+        <svg class="logo-flag" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-label="Magyar zászló">
+          <rect width="24" height="16" rx="2" fill="#CE2939"/>
+          <rect y="5.33" width="24" height="5.34" fill="#ffffff"/>
+          <rect y="10.67" width="24" height="5.33" rx="0" fill="#436F4D"/>
+          <rect y="10.67" width="24" height="5.33" fill="#436F4D"/>
+        </svg>
+        Tisza Követő
+      </a>
       <div class="nav-actions">
         <form class="subscribe-form" id="subscribe-form">
           <input type="email" placeholder="E-mail feliratkozáshoz" required autocomplete="email">
