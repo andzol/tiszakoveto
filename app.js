@@ -53,13 +53,11 @@ function setUser(user) {
   currentUser = user;
   const loginBtn  = document.getElementById('login-btn');
   const userInfo  = document.getElementById('user-info');
-  const emailEl   = document.getElementById('user-email-display');
   const avatarEl  = document.getElementById('user-avatar');
 
   if (user) {
     loginBtn.style.display  = 'none';
     userInfo.classList.add('visible');
-    emailEl.textContent = user.email ?? '';
     // Initials avatar (or Google photo if available)
     const pic = user.user_metadata?.avatar_url;
     if (pic) {

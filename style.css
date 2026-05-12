@@ -213,15 +213,6 @@ a { color: inherit; text-decoration: none; }
 }
 .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-.user-email-display {
-  font-size: 0.78rem;
-  color: var(--text-on-dark-muted);
-  max-width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: none; /* hidden in navbar — avatar is enough */
-}
 
 .btn-logout {
   height: 28px;
