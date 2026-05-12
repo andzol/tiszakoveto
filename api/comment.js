@@ -1,46 +1,48 @@
 // Vercel serverless function — POST /api/comment
-// Stores user comments to Supabase (not displayed publicly).
-// Required env vars: SUPABASE_URL, SUPABASE_SERVICE_KEY
+// Verifies Supabase Google auth JWT, then stores comment with user_email.
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-
-  const { promise_id, name, comment } = req.body ?? {};
-
-  if (!promise_id || typeof promise_id !== 'number') {
-    return res.status(400).json({ error: 'promise_id is required and must be a number' });
-  }
-  if (!comment || typeof comment !== 'string' || comment.trim().length === 0) {
-    return res.status(400).json({ error: 'comment is required' });
-  }
-  if (comment.length > 2000) {
-    return res.status(400).json({ error: 'comment too long (max 2000 chars)' });
-  }
-  if (name && name.length > 80) {
-    return res.status(400).json({ error: 'name too long (max 80 chars)' });
-  }
+  if (req.method !== 'POST')   return res.status(405).json({ error: 'Method not allowed' });
 
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
-
   if (!supabaseUrl || !supabaseKey) {
-    console.error('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY env vars');
+    console.error('Missing env vars');
     return res.status(500).json({ error: 'Server misconfiguration' });
   }
 
-  const payload = {
-    promise_id,
-    comment: comment.trim(),
-    name: name ? name.trim() : null,
-    user_agent: req.headers['user-agent'] ?? null,
-  };
+  // ── Verify auth token ──────────────────────────────────────────────
+  const authHeader = req.headers['authorization'] ?? '';
+  const accessToken = authHeader.replace('Bearer ', '').trim();
+  if (!accessToken) return res.status(401).json({ error: 'Not authenticated' });
 
-  const response = await fetch(`${supabaseUrl}/rest/v1/comments`, {
+  const userRes = await fetch(`${supabaseUrl}/auth/v1/user`, {
+    headers: {
+      'apikey': supabaseKey,
+      'Authorization': `Bearer ${accessToken}`,
+    },
+  });
+  if (!userRes.ok) return res.status(401).json({ error: 'Invalid or expired session' });
+
+  const userData = await userRes.json();
+  const userEmail = userData.email;
+  if (!userEmail) return res.status(401).json({ error: 'Could not identify user' });
+
+  // ── Validate body ──────────────────────────────────────────────────
+  const { promise_id, comment } = req.body ?? {};
+  if (!promise_id || typeof promise_id !== 'number')
+    return res.status(400).json({ error: 'promise_id required' });
+  if (!comment || typeof comment !== 'string' || !comment.trim())
+    return res.status(400).json({ error: 'comment required' });
+  if (comment.length > 2000)
+    return res.status(400).json({ error: 'comment too long' });
+
+  // ── Insert into Supabase ───────────────────────────────────────────
+  const insertRes = await fetch(`${supabaseUrl}/rest/v1/comments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,11 +50,16 @@ module.exports = async function handler(req, res) {
       'Authorization': `Bearer ${supabaseKey}`,
       'Prefer': 'return=minimal',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      promise_id,
+      comment: comment.trim(),
+      user_email: userEmail,
+      user_agent: req.headers['user-agent'] ?? null,
+    }),
   });
 
-  if (!response.ok) {
-    const text = await response.text();
+  if (!insertRes.ok) {
+    const text = await insertRes.text();
     console.error('Supabase insert failed:', text);
     return res.status(500).json({ error: 'Failed to save comment' });
   }

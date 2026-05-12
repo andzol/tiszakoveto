@@ -1,23 +1,27 @@
 'use strict';
 
+// ─── Supabase config (anon/publishable key — safe for frontend) ──────
+const SUPABASE_URL     = 'https://uffjqxhlzcrixgduqyuh.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_RBCWFno846-wW1Vmu36QJQ_hRnDlr6x';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 const CATEGORY_META = {
-  korrupcio_elleni_harc_es_jogallam:      { label: 'Korrupció elleni harc és jogállam', icon: '⚖️' },
-  gazdasag_es_koltsegvetes:               { label: 'Gazdaság és költségvetés',            icon: '📊' },
-  adopolitika:                            { label: 'Adópolitika',                          icon: '🧾' },
-  egeszsegugy:                            { label: 'Egészségügy',                          icon: '🏥' },
-  oktatas_es_tudomany:                    { label: 'Oktatás és tudomány',                  icon: '📚' },
-  szocialis_halo_es_csaladtamogatas:      { label: 'Szociális háló és családtámogatás',   icon: '👨‍👩‍👧' },
-  nyugdij_es_idosgondozas:               { label: 'Nyugdíj és idősgondozás',             icon: '🌿' },
-  gyermekvedelem:                         { label: 'Gyermekvédelem',                       icon: '🧒' },
-  infrastruktura_es_kozlekedes:           { label: 'Infrastruktúra és közlekedés',         icon: '🛤️' },
-  lakhatas:                               { label: 'Lakhatás',                             icon: '🏠' },
-  energetika_kornyezet_es_allatvedelem:  { label: 'Energetika, környezet és állatvédelem', icon: '♻️' },
+  korrupcio_elleni_harc_es_jogallam:        { label: 'Korrupció elleni harc és jogállam',       icon: '⚖️' },
+  gazdasag_es_koltsegvetes:                 { label: 'Gazdaság és költségvetés',                icon: '📊' },
+  adopolitika:                              { label: 'Adópolitika',                              icon: '🧾' },
+  egeszsegugy:                              { label: 'Egészségügy',                              icon: '🏥' },
+  oktatas_es_tudomany:                      { label: 'Oktatás és tudomány',                      icon: '📚' },
+  szocialis_halo_es_csaladtamogatas:        { label: 'Szociális háló és családtámogatás',       icon: '👨‍👩‍👧' },
+  nyugdij_es_idosgondozas:                 { label: 'Nyugdíj és idősgondozás',                 icon: '🌿' },
+  gyermekvedelem:                           { label: 'Gyermekvédelem',                           icon: '🧒' },
+  infrastruktura_es_kozlekedes:             { label: 'Infrastruktúra és közlekedés',             icon: '🛤️' },
+  lakhatas:                                 { label: 'Lakhatás',                                 icon: '🏠' },
+  energetika_kornyezet_es_allatvedelem:    { label: 'Energetika, környezet és állatvédelem',   icon: '♻️' },
   kulpolitika_honvedelem_es_nemzetpolitika: { label: 'Külpolitika, honvédelem és nemzetpolitika', icon: '🌍' },
-  allamigazgatas_es_onkormanyzatok:       { label: 'Államigazgatás és önkormányzatok',    icon: '🏛️' },
+  allamigazgatas_es_onkormanyzatok:         { label: 'Államigazgatás és önkormányzatok',        icon: '🏛️' },
 };
 
 const HU_MONTHS = ['jan.','febr.','márc.','ápr.','máj.','jún.','júl.','aug.','szept.','okt.','nov.','dec.'];
-
 function fmtDate(iso) {
   if (!iso) return '';
   const [y, m, d] = iso.split('-');
@@ -25,20 +29,71 @@ function fmtDate(iso) {
 }
 
 let currentFilter = 'all';
-let allPromises = [];
+let allPromises   = [];
+let currentUser   = null;
 
-document.addEventListener('DOMContentLoaded', () => {
+// ─── Init ────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  // Restore session (handles OAuth redirect token in URL hash too)
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) setUser(session.user);
+
+  sb.auth.onAuthStateChange((_event, session) => {
+    setUser(session?.user ?? null);
+  });
+
   loadPromises();
   setupFilters();
   setupSubscribeForm();
+  setupAuthButtons();
 });
 
+// ─── Auth ────────────────────────────────────────────────────────────
+function setUser(user) {
+  currentUser = user;
+  const loginBtn  = document.getElementById('login-btn');
+  const userInfo  = document.getElementById('user-info');
+  const emailEl   = document.getElementById('user-email-display');
+  const avatarEl  = document.getElementById('user-avatar');
+
+  if (user) {
+    loginBtn.style.display  = 'none';
+    userInfo.classList.add('visible');
+    emailEl.textContent = user.email ?? '';
+    // Initials avatar (or Google photo if available)
+    const pic = user.user_metadata?.avatar_url;
+    if (pic) {
+      avatarEl.innerHTML = `<img src="${pic}" alt="">`;
+    } else {
+      avatarEl.textContent = (user.email ?? 'U')[0].toUpperCase();
+    }
+  } else {
+    loginBtn.style.display  = 'flex';
+    userInfo.classList.remove('visible');
+  }
+}
+
+function setupAuthButtons() {
+  document.getElementById('login-btn').addEventListener('click', () => {
+    sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin },
+    });
+  });
+  document.getElementById('logout-btn').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    setUser(null);
+  });
+}
+
+// ─── Data ────────────────────────────────────────────────────────────
 async function loadPromises() {
   try {
     const res = await fetch('vallalasok.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allPromises = await res.json();
     renderAll(allPromises);
+    renderHighlights(allPromises);
   } catch (err) {
     document.getElementById('promises-container').innerHTML =
       `<div class="loading-state" style="color:#e05c6e">Hiba az adatok betöltésekor: ${err.message}</div>`;
@@ -55,10 +110,36 @@ function classifyItem(item) {
   return 'pending';
 }
 
-function renderAll(promises) {
-  const today = new Date();
+// ─── Highlights ──────────────────────────────────────────────────────
+function renderHighlights(promises) {
+  // Left: recently completed (sorted by donedate desc)
+  const done = promises
+    .filter(p => p.isdone)
+    .sort((a, b) => (b.donedate ?? '').localeCompare(a.donedate ?? ''))
+    .slice(0, 5);
 
-  // Compute stats
+  const doneList = document.getElementById('recently-done');
+  if (done.length === 0) {
+    doneList.innerHTML = '<li class="highlight-empty">Még nincs teljesített vállalás.</li>';
+  } else {
+    doneList.innerHTML = done.map(p => `
+      <li class="highlight-item">
+        <span class="hi-check">✓</span>
+        <span>${escHtml(p.todo)}</span>
+      </li>`).join('');
+  }
+
+  // Right: last 5 by id (most recently added to the tracker)
+  const added = [...promises].sort((a, b) => b.id - a.id).slice(0, 5);
+  document.getElementById('recently-added').innerHTML = added.map(p => `
+    <li class="highlight-item">
+      <span class="hi-dot">◆</span>
+      <span>${escHtml(p.todo)}</span>
+    </li>`).join('');
+}
+
+// ─── Render promises ─────────────────────────────────────────────────
+function renderAll(promises) {
   let totalDone = 0, totalPending = 0, totalExpired = 0;
   promises.forEach(p => {
     const s = classifyItem(p);
@@ -66,13 +147,12 @@ function renderAll(promises) {
     else if (s === 'expired') totalExpired++;
     else totalPending++;
   });
-
   document.getElementById('stat-total').textContent   = promises.length;
   document.getElementById('stat-done').textContent    = totalDone;
   document.getElementById('stat-pending').textContent = totalPending;
   document.getElementById('stat-expired').textContent = totalExpired;
 
-  // Group by category preserving order
+  // Group by category
   const groups = {};
   promises.forEach(p => {
     if (!groups[p.category]) groups[p.category] = [];
@@ -101,7 +181,7 @@ function renderAll(promises) {
     items.forEach(item => {
       const status = classifyItem(item);
       const li = document.createElement('li');
-      li.className = `promise-item ${status === 'done' ? 'is-done' : ''} ${status === 'expired' ? 'is-expired' : ''}`.trim();
+      li.className = `promise-item${status === 'done' ? ' is-done' : ''}${status === 'expired' ? ' is-expired' : ''}`;
       li.dataset.status = status;
       li.dataset.id = item.id;
 
@@ -109,47 +189,26 @@ function renderAll(promises) {
       if (status === 'done')    badgeContent = '✓';
       else if (status === 'expired') badgeContent = '–';
 
-      const deadlineHtml = item.deadline
-        ? `<span class="promise-deadline ${status === 'expired' ? 'is-expired' : ''}">
-             Határidő: ${fmtDate(item.deadline)}
-           </span>`
-        : '';
-
       const donedateHtml = item.donedate
-        ? `<span class="promise-donedate">Teljesítve: ${fmtDate(item.donedate)}</span>`
-        : '';
+        ? `<div class="promise-donedate">Teljesítve: ${fmtDate(item.donedate)}</div>` : '';
 
       li.innerHTML = `
         <div class="promise-row">
           <span class="status-badge ${status}" aria-label="${status === 'done' ? 'Teljesítve' : status === 'expired' ? 'Lejárt' : 'Folyamatban'}">${badgeContent}</span>
           <div class="promise-body">
             <p class="promise-text">${escHtml(item.todo)}</p>
-            <div class="promise-meta">
-              ${deadlineHtml}
-              ${donedateHtml}
-            </div>
+            ${donedateHtml}
           </div>
-          <button class="comment-toggle" aria-expanded="false" data-id="${item.id}">Megjegyzés</button>
+          <button class="comment-toggle" data-id="${item.id}">Megjegyzés</button>
         </div>
-        <div class="comment-form-wrap" id="cf-${item.id}">
-          <form class="comment-form" data-promise-id="${item.id}">
-            <input type="text" name="name" placeholder="Neved (nem kötelező)" maxlength="80" autocomplete="off">
-            <textarea name="comment" placeholder="Írd le megfigyelésedet vagy megjegyzésedet…" maxlength="2000" required></textarea>
-            <div class="comment-form-footer">
-              <span class="comment-form-note">Nem jelenik meg nyilvánosan — csak szerkesztői célra tároljuk.</span>
-              <button type="submit" class="comment-submit">Küldés</button>
-            </div>
-          </form>
-        </div>
+        <div class="comment-form-wrap" id="cf-${item.id}"></div>
       `;
-
       list.appendChild(li);
     });
 
     container.appendChild(section);
   }
 
-  // Add empty state element
   const empty = document.createElement('div');
   empty.className = 'empty-state';
   empty.id = 'empty-state';
@@ -160,34 +219,67 @@ function renderAll(promises) {
   applyFilter(currentFilter);
 }
 
+// ─── Item event listeners ────────────────────────────────────────────
 function attachItemListeners() {
-  // Comment toggles
   document.querySelectorAll('.comment-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      const id = btn.dataset.id;
+      const id   = btn.dataset.id;
       const wrap = document.getElementById(`cf-${id}`);
       const isOpen = wrap.classList.toggle('open');
       btn.setAttribute('aria-expanded', isOpen);
       btn.textContent = isOpen ? 'Bezárás' : 'Megjegyzés';
-      if (isOpen) wrap.querySelector('textarea').focus();
-    });
-  });
 
-  // Comment forms
-  document.querySelectorAll('.comment-form').forEach(form => {
-    form.addEventListener('submit', handleCommentSubmit);
+      if (isOpen) {
+        if (!currentUser) {
+          // Show login prompt
+          wrap.innerHTML = `
+            <div class="login-prompt">
+              <p>A megjegyzéshez be kell jelentkezned Google fiókkal.</p>
+              <button class="btn-google-inline" id="inline-login-${id}">
+                <svg width="14" height="14" viewBox="0 0 48 48">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.35-8.16 2.35-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+                Bejelentkezés Google-lal
+              </button>
+            </div>`;
+          document.getElementById(`inline-login-${id}`)?.addEventListener('click', () => {
+            sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin } });
+          });
+        } else {
+          // Show comment form
+          wrap.innerHTML = `
+            <form class="comment-form" data-promise-id="${id}">
+              <textarea name="comment" placeholder="Írd le megfigyelésedet vagy megjegyzésedet…" maxlength="2000" required></textarea>
+              <div class="comment-form-footer">
+                <span class="comment-form-note">Nem jelenik meg nyilvánosan — szerkesztői célra tároljuk.</span>
+                <button type="submit" class="comment-submit">Küldés</button>
+              </div>
+            </form>`;
+          wrap.querySelector('.comment-form').addEventListener('submit', handleCommentSubmit);
+          wrap.querySelector('textarea').focus();
+        }
+      }
+    });
   });
 }
 
+// ─── Comment submit ──────────────────────────────────────────────────
 async function handleCommentSubmit(e) {
   e.preventDefault();
-  const form = e.currentTarget;
-  const promiseId = Number(form.dataset.promiseId);
-  const name = form.elements.name.value.trim();
-  const comment = form.elements.comment.value.trim();
-  const btn = form.querySelector('.comment-submit');
+  if (!currentUser) return;
 
+  const form      = e.currentTarget;
+  const promiseId = Number(form.dataset.promiseId);
+  const comment   = form.elements.comment.value.trim();
+  const btn       = form.querySelector('.comment-submit');
   if (!comment) return;
+
+  const { data: { session } } = await sb.auth.getSession();
+  const accessToken = session?.access_token;
+  if (!accessToken) { showToast('Lejárt a bejelentkezés, kérjük jelentkezz be újra.', true); return; }
 
   btn.disabled = true;
   btn.textContent = 'Küldés…';
@@ -195,19 +287,20 @@ async function handleCommentSubmit(e) {
   try {
     const res = await fetch('/api/comment', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ promise_id: promiseId, name: name || null, comment }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({ promise_id: promiseId, comment }),
     });
-
     if (!res.ok) throw new Error('Szerverhiba');
 
     showToast('Köszönjük a megjegyzést!');
     form.reset();
 
-    // Close the form
-    const wrap = form.closest('.comment-form-wrap');
+    const wrap   = form.closest('.comment-form-wrap');
+    const toggle = wrap.previousElementSibling?.querySelector('.comment-toggle');
     wrap.classList.remove('open');
-    const toggle = wrap.previousElementSibling.querySelector('.comment-toggle');
     if (toggle) { toggle.textContent = 'Megjegyzés'; toggle.setAttribute('aria-expanded', 'false'); }
   } catch {
     showToast('Hiba küldés közben — próbáld újra.', true);
@@ -217,6 +310,7 @@ async function handleCommentSubmit(e) {
   }
 }
 
+// ─── Filters ─────────────────────────────────────────────────────────
 function setupFilters() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -230,50 +324,31 @@ function setupFilters() {
 
 function applyFilter(filter) {
   let anyVisible = false;
-
   document.querySelectorAll('.promise-item').forEach(item => {
-    const status = item.dataset.status;
-    const visible = filter === 'all' || status === filter;
-    item.dataset.visible = visible;
+    const visible = filter === 'all' || item.dataset.status === filter;
     item.style.display = visible ? '' : 'none';
     if (visible) anyVisible = true;
   });
-
-  // Hide entire category section if no visible items
   document.querySelectorAll('.category-section').forEach(section => {
-    const hasVisible = [...section.querySelectorAll('.promise-item')].some(i => i.style.display !== 'none');
-    section.style.display = hasVisible ? '' : 'none';
+    const has = [...section.querySelectorAll('.promise-item')].some(i => i.style.display !== 'none');
+    section.style.display = has ? '' : 'none';
   });
-
   const empty = document.getElementById('empty-state');
   if (empty) empty.classList.toggle('visible', !anyVisible);
 }
 
+// ─── Subscribe form ──────────────────────────────────────────────────
 function setupSubscribeForm() {
   const form = document.getElementById('subscribe-form');
   if (!form) return;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = form.querySelector('input[type="email"]').value.trim();
-    if (!email) return;
-
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error();
-      showToast('Feliratkozás sikeres! Hamarosan értesítünk.');
-      form.reset();
-    } catch {
-      // Fallback: just show thanks (subscribe endpoint optional)
-      showToast('Köszönjük a feliratkozást!');
-      form.reset();
-    }
+    showToast('Köszönjük a feliratkozást!');
+    form.reset();
   });
 }
 
+// ─── Helpers ─────────────────────────────────────────────────────────
 function showToast(msg, isError = false) {
   const toast = document.getElementById('comment-toast');
   toast.textContent = msg;
@@ -284,8 +359,6 @@ function showToast(msg, isError = false) {
 
 function escHtml(str) {
   return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
