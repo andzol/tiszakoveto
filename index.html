@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tisza Követő — Vállalások nyomon követése</title>
+  <meta name="description" content="Nyomon követjük a Tisza Párt kampány során elhangzott vállalásait és azok megvalósulását.">
+  <meta property="og:title" content="Tisza Követő">
+  <meta property="og:description" content="Nyomon követjük a Tisza Párt vállalásait és megvalósulásukat.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="/" class="logo">Tisza Követő</a>
+      <div class="nav-actions">
+        <form class="subscribe-form" id="subscribe-form">
+          <input type="email" placeholder="E-mail feliratkozáshoz" required autocomplete="email">
+          <button type="submit">Feliratkozás</button>
+        </form>
+        <a href="https://4fund.com/3zncry" class="btn-donate" target="_blank" rel="noopener">Támogatás</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Politikai elszámoltathatóság</p>
+      <h1>Tisza Követő</h1>
+      <p class="hero-subtitle">Nyomon követjük a Tisza Párt kampány során elhangzott vállalásait és azok megvalósulását.</p>
+      <div class="stats-bar" id="stats-bar">
+        <div class="stat">
+          <span class="stat-num" id="stat-total">—</span>
+          <span class="stat-label">vállalás</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num stat-done" id="stat-done">—</span>
+          <span class="stat-label">teljesített</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num stat-pending" id="stat-pending">—</span>
+          <span class="stat-label">folyamatban</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num stat-expired" id="stat-expired">—</span>
+          <span class="stat-label">lejárt</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#f7f4ef"/>
+      </svg>
+    </div>
+  </header>
+
+  <div class="filter-bar" id="filter-bar">
+    <div class="filter-inner">
+      <button class="filter-btn active" data-filter="all">Összes</button>
+      <button class="filter-btn" data-filter="done">Teljesített</button>
+      <button class="filter-btn" data-filter="pending">Folyamatban</button>
+      <button class="filter-btn" data-filter="expired">Lejárt</button>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div id="promises-container">
+      <div class="loading-state">
+        <div class="loading-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>Betöltés folyamatban…</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="comment-toast" id="comment-toast" aria-live="polite"></div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Tisza Követő</span>
+        <p>Készült a transzparencia és a demokratikus elszámoltathatóság jegyében.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:info@tiszakoveto.hu">Kapcsolat</a>
+        <a href="https://4fund.com/3zncry" target="_blank" rel="noopener">Támogatás</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tisza Követő. Független civil kezdeményezés.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

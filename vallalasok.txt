@@ -1,0 +1,76 @@
+isdone	category	todo	donedate	deadline
+false	korrupcio_elleni_harc_es_jogallam	Európai Ügyészséghez való csatlakozás		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Nemzeti Vagyonvisszaszerzési és Védelmi Hivatal létrehozása		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Az elmúlt évek korrupciós botrányainak feltárására és a vagyon visszaszerzésére		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Húsz évre visszamenoleg vagyonosodási vizsgálat bevezetése az országgyulési képviselok, politikai vezetok és családtagjaik körében		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Miniszterelnöki mandátum két ciklusra történo korlátozása		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Rendeleti kormányzás megszüntetése		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Szuverenitásvédelmi Hivatal megszüntetése		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Propaganda megszüntetése a közmédiában a hírszolgáltatás objektívvé tételéig történo felfüggesztése		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Új médiatörvény megalkotása		2030-03-30
+false	korrupcio_elleni_harc_es_jogallam	Magántokealapok és egyéb eszközkezelok mögötti tényleges tulajdonosok anonimitásának megszüntetése		2030-03-30
+false	gazdasag_es_koltsegvetes	Befagyasztott európai uniós RRF források végleges hazahozatala		2026-08-31
+false	gazdasag_es_koltsegvetes	Európán kívüli vendégmunkások behozatalának felfüggesztése		2026-06-01
+false	gazdasag_es_koltsegvetes	Maastrichti kritériumok (3% alatti hiány, csökkeno államadósság) teljesítése és az euró bevezetésének elokészítése		2030-12-31
+false	gazdasag_es_koltsegvetes	Vállalkozások adóügyi adminisztrációs terheinek megfelezése (maximum évi 150 órára)		2030-03-30
+false	gazdasag_es_koltsegvetes	Innovációra fordított K+F kiadások másfélszeresére növelése (GDP 2%-ára)		2030-12-31
+false	adopolitika	Minimálbér adójának csökkentése 15%-ról 9%-ra		2030-03-30
+false	adopolitika	Mediánbér alatt keresok személyi jövedelemadójának csökkentése		2030-03-30
+false	adopolitika	1%-os vagyonadó bevezetése az 1 milliárd forint feletti vagyonnal rendelkezok 1 milliárd feletti vagyonrészére		2030-03-30
+false	adopolitika	Vényköteles gyógyszerek áfájának 0%-ra, valamint a tuzifa és egészséges élelmiszerek áfájának 5%-ra csökkentése		2030-03-30
+false	adopolitika	Kedvezményes KATA adózás széles körben történo újra elérhetové tétele		2030-03-30
+false	egeszsegugy	Önálló Egészségügyi Minisztérium létrehozása		2030-03-30
+false	egeszsegugy	Évente legalább 500 milliárd forint többletforrás biztosítása az állami egészségügynek (a kiadások GDP 7%-ára növelése)		2030-12-31
+false	egeszsegugy	Várólisták csökkentése: fekvobeteg-ellátásban legfeljebb 6, járóbeteg-ellátásban 2 hónapra		2027-12-31
+false	egeszsegugy	Mentok 15 percen belüli kiérkezésének biztosítása minden régióban		2027-12-31
+false	egeszsegugy	Szuperkórház fejlesztése minden régióban és a novér-orvos arány 1,6-ról 2,5-re emelése		2030-03-30
+false	egeszsegugy	Születéskor várható élettartam legalább 80 évre emelése		2035-12-31
+false	oktatas_es_tudomany	Önálló Oktatási Minisztérium létrehozása		2030-03-30
+false	oktatas_es_tudomany	Tankötelezettség 18 évre emelése		2030-03-30
+false	oktatas_es_tudomany	Állami tankönyvmonopólium megszüntetése és a Nemzeti Alaptanterv módosítása szakmai egyeztetés alapján		2030-03-30
+false	oktatas_es_tudomany	25%-os béremelés a nevelést és oktatást segíto dolgozók körében		2030-03-30
+false	oktatas_es_tudomany	KEKVA (alapítványi) modell megszüntetése és az egyetemek autonómiájának visszaállítása		2030-03-30
+false	oktatas_es_tudomany	MCC részére juttatott állami vagyon visszaszerzése		2030-03-30
+false	oktatas_es_tudomany	Erasmus és Horizon programokban való részvétel újra biztosítása diákok és kutatók számára		2030-03-30
+false	oktatas_es_tudomany	Legalább egy magyar egyetem globális TOP 200-ba juttatása		2035-12-31
+false	szocialis_halo_es_csaladtamogatas	Családi pótlék, anyasági támogatás, GYES és GYET megduplázása		2030-03-30
+false	szocialis_halo_es_csaladtamogatas	50 ezer forint értéku kelengye biztosítása minden újszülöttnek és 100 ezer forint iskolakezdési támogatás a rászorulóknak		2030-03-30
+false	szocialis_halo_es_csaladtamogatas	Otthonápolási díjak 50%-os megemelése		2030-03-30
+false	szocialis_halo_es_csaladtamogatas	CSOK és CSOK Plusz visszafizetési kötelezettségének eltörlése válás esetén		2030-03-30
+false	szocialis_halo_es_csaladtamogatas	Általános, 25%-os béremelés végrehajtása a szociális szektorban		2030-03-30
+false	nyugdij_es_idosgondozas	13. és 14. havi nyugdíj megtartása		2030-03-30
+false	nyugdij_es_idosgondozas	Nyugdíjas SZÉP-kártya bevezetése évi maximum 200 ezer forint támogatás értékig		2030-03-30
+false	nyugdij_es_idosgondozas	Garantált havi minimum 120 ezer forintos öregségi és rokkantsági nyugdíj bevezetése		2030-03-30
+false	nyugdij_es_idosgondozas	Idoskorúak járadékának megduplázása		2030-03-30
+false	nyugdij_es_idosgondozas	20 ezer új férohely létesítése korszeru idosotthonokban		2030-03-30
+false	gyermekvedelem	Elmúlt évtizedek gyermekvédelmi buncselekményeinek feltárása és kártérítés biztosítása az áldozatoknak		2030-03-30
+false	gyermekvedelem	Gyermekvédelmi dolgozók bérének azonnali 25%-os megemelése és inflációkövetové tétele		2030-03-30
+false	gyermekvedelem	Gyermekotthonok felújítása és a neveloszüloi hálózat megerosítése		2030-12-31
+false	gyermekvedelem	Gyermekvédelmi ágazat muködési költségvetésének 20%-os növelése és felülrol nyitottá tétele		2030-03-30
+false	infrastruktura_es_kozlekedes	Vasúti kocsik és mozdonyok átlagéletkorának megfelezése		2036-12-31
+false	infrastruktura_es_kozlekedes	Vasúti fovonalakon 100 km/h átlagsebesség elérése és a villamosított pályák hosszának 50%-ra növelése		2030-03-30
+false	infrastruktura_es_kozlekedes	35 éves autópálya-koncessziós szerzodés felülvizsgálata és az útdíjak csökkentése		2030-03-30
+false	infrastruktura_es_kozlekedes	Galvani-híd, Soroksári-Duna-híd, új szegedi Tisza-híd, valamint az M200-M8 és M9 gyorsforgalmi utak megépítése		2030-03-30
+false	infrastruktura_es_kozlekedes	Közutak fenntartására és felújítására fordított kiadások megduplázása		2030-03-30
+false	lakhatas	Lakásépítések számának megduplázása, bérlakás- és lakásszövetkezeti program indítása		2030-03-30
+false	lakhatas	Kollégiumi férohelyek 50%-os növelése a fiatalok számára		2030-03-30
+false	lakhatas	Végrehajtás és felszámolás állami kézbe (non-profittá) tétele, a végrehajtói kamara megszüntetése		2030-03-30
+false	energetika_kornyezet_es_allatvedelem	Orosz energiafüggoség megszüntetése		2035-12-31
+false	energetika_kornyezet_es_allatvedelem	Megújuló energia arányának megduplázása		2040-12-31
+false	energetika_kornyezet_es_allatvedelem	Lakásállomány 25%-ának energiahatékonnyá tétele a Családi Energetikai Programmal		2036-12-31
+false	energetika_kornyezet_es_allatvedelem	Rezsicsökkentés megtartása és kiterjesztése, szociális tuzifakeret megduplázása		2030-03-30
+false	energetika_kornyezet_es_allatvedelem	MOHU Zrt. 35 éves hulladékkoncessziójának felülvizsgálata és egy olcsóbb rendszer bevezetése		2030-03-30
+false	energetika_kornyezet_es_allatvedelem	Külön hatóság létrehozása az akkumulátorgyárak és szennyezo iparágak szigorú ellenorzésére		2030-03-30
+false	energetika_kornyezet_es_allatvedelem	Országos hatásköru állatjóléti hatóság létrehozása és országos ivartalanítási program indítása		2030-03-30
+false	kulpolitika_honvedelem_es_nemzetpolitika	Katonai részvétel elutasítása az orosz-ukrán háborúban és a sorkötelezettség visszaállításának elutasítása		2030-03-30
+false	kulpolitika_honvedelem_es_nemzetpolitika	A csádi katonai misszió azonnali felfüggesztése		2030-03-30
+false	kulpolitika_honvedelem_es_nemzetpolitika	Védelmi kiadások növelése a GDP 5%-ára		2035-12-31
+false	kulpolitika_honvedelem_es_nemzetpolitika	Ukrajna gyorsított EU-csatlakozásának elutasítása		2030-03-30
+false	kulpolitika_honvedelem_es_nemzetpolitika	Zéró tolerancia az illegális bevándorlással szemben, a határkerítés fenntartása és a migrációs kvóták elutasítása		2030-03-30
+false	kulpolitika_honvedelem_es_nemzetpolitika	'Vár a hazád!' program meghirdetése, a népességfogyás megállítása és a 10 milliós célkituzés elérése		2050-12-31
+false	kulpolitika_honvedelem_es_nemzetpolitika	A kettos állampolgárság megtartása és a külföldön szavazás szabályainak egységesítése		2030-03-30
+false	allamigazgatas_es_onkormanyzatok	A vármegye elnevezés és a foispáni pozíció megszüntetése		2030-03-30
+false	allamigazgatas_es_onkormanyzatok	Évi egymilliárd forintos közösségi fejlesztési keret biztosítása tíz falunként		2030-03-30
+false	allamigazgatas_es_onkormanyzatok	Önálló Vidékfejlesztési Minisztérium létrehozása		2030-03-30
+false	allamigazgatas_es_onkormanyzatok	Budapest-törvény megalkotása a fováros és a kormány viszonyának szabályozására		2030-03-30
+false	allamigazgatas_es_onkormanyzatok	Személyes mesterséges intelligencia-asszisztens fejlesztése minden állampolgár számára		2030-03-30
