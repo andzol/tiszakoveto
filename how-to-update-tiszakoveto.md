@@ -89,20 +89,36 @@ A parlament.hu-n azt lehet követni, hogy egy vállaláshoz kapcsolódó törvé
 
 ---
 
+## ⚠️ Alapelv: csak hatályba lépés után jelölhető teljesítettnek
+
+> **Híroldal nem elegendő bizonyíték.** Egy vállalás csak akkor kerülhet `"isdone": true` státuszba, ha a vonatkozó jogszabály megjelent a **Magyar Közlönyben** és **hatályba lépett** — ezt a **Nemzeti Jogszabálytáron (NJT)** ellenőrzöm.
+
+| Forrás | Mikor elegendő? |
+|---|---|
+| Híroldal, sajtóközlemény | ❌ Nem — csak tájékoztatás, hogy merre érdemes keresni |
+| Parlamenti szavazás eredménye | ❌ Nem — elfogadott, de még nem hatályos |
+| Magyar Közlönyben megjelent | ⚠️ Részben — kihirdetve, de a hatályba lépés dátuma számít |
+| NJT-n „hatályos" státuszban van | ✅ Igen — ez a teljesítés bizonyítéka |
+
+A `donedate` mindig a **hatályba lépés dátuma**, nem a kihirdetésé és nem a parlamenti szavazásé.
+
+---
+
 ## Lépések egy vállalás teljesítettré jelöléséhez
 
-1. **Keresd meg a bizonyítékot** — Magyar Közlöny vagy NJT
-2. **Jegyezd fel a dátumot** — a kihirdetés napja lesz a `donedate`
-3. **Nyisd meg a `vallalasok.json`-t** a szerkesztőben
-4. **Keresd meg az id alapján** a megfelelő sort (Ctrl+F → `"id":5`)
-5. **Módosítsd:**
+1. **Keresd meg a jogszabályt** — Magyar Közlöny vagy NJT (kulcsszóra keresve)
+2. **Ellenőrizd az NJT-n** hogy „hatályos"-e, és mi a hatályba lépés dátuma
+3. **Jegyezd fel a dátumot** — a **hatályba lépés** napja lesz a `donedate`
+4. **Nyisd meg a `vallalasok.json`-t** a szerkesztőben
+5. **Keresd meg az id alapján** a megfelelő sort (Ctrl+F → `"id":5`)
+6. **Módosítsd:**
    - `"isdone": false` → `"isdone": true`
-   - `"donedate": null` → `"donedate": "2026-05-01"` (a tényleges dátum)
-6. **Opcionálisan adj note-ot** a forrásra hivatkozva:
+   - `"donedate": null` → `"donedate": "2026-05-14"` (hatályba lépés dátuma)
+7. **Adj note-ot** a forrás megjelölésével:
    ```json
-   "note": "Magyar Közlöny 2026/45. szám alapján kihirdetve."
+   "note": "2026. évi XY. törvény — Magyar Közlöny 2026/45. szám, hatályba lépett: 2026-05-14."
    ```
-7. **Mentés → git commit → git push** → az oldal ~30 másodperc alatt frissül
+8. **Mentés → git commit → git push** → az oldal ~30 másodperc alatt frissül
 
 ---
 
