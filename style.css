@@ -949,11 +949,6 @@ a { color: inherit; text-decoration: none; }
 .stat[data-filter]:hover {
   background: rgba(255,255,255,0.12);
 }
-.stat[data-filter]:hover .stat-num {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
-}
 
 /* ─── Search bar ────────────────────────────────────────────────────── */
 .search-bar-wrap {
