@@ -29,6 +29,8 @@ function fmtDate(iso) {
 }
 
 let currentFilter = 'all';
+let currentSearch = '';
+let currentTag    = '';
 let allPromises   = [];
 let currentUser   = null;
 
@@ -44,6 +46,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   loadPromises();
   setupFilters();
+  setupStatClicks();
+  setupSearch();
   setupSubscribeForm();
   setupAuthButtons();
 });
@@ -189,6 +193,8 @@ function renderAll(promises) {
       li.className = `promise-item${status === 'done' ? ' is-done' : ''}${status === 'expired' ? ' is-expired' : ''}`;
       li.dataset.status = status;
       li.dataset.id = item.id;
+      li.dataset.tags = (item.tags || []).join(',');
+      li.dataset.text = (item.todo + ' ' + (item.note || '')).toLowerCase();
 
       let badgeContent = '';
       if (status === 'done')    badgeContent = '✓';
@@ -224,7 +230,8 @@ function renderAll(promises) {
   container.appendChild(empty);
 
   attachItemListeners();
-  applyFilter(currentFilter);
+  renderTagCloud(allPromises);
+  applyFilters();
 }
 
 // ─── Item event listeners ────────────────────────────────────────────
@@ -330,22 +337,103 @@ function setupFilters() {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
-      applyFilter(currentFilter);
+      applyFilters();
     });
   });
 }
 
-function applyFilter(filter) {
+// ─── Stat clicks ─────────────────────────────────────────────────────
+function setupStatClicks() {
+  document.querySelectorAll('.stat[data-filter]').forEach(stat => {
+    const activate = () => {
+      const filter = stat.dataset.filter;
+      // Update filter tab
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === filter);
+      });
+      currentFilter = filter;
+      applyFilters();
+      // Scroll to main content list
+      const main = document.querySelector('.main-content');
+      if (main) {
+        const offset = 130;
+        const top = main.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    };
+    stat.addEventListener('click', activate);
+    stat.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  });
+}
+
+// ─── Search ──────────────────────────────────────────────────────────
+function setupSearch() {
+  const input = document.getElementById('search-input');
+  if (!input) return;
+  input.addEventListener('input', () => {
+    const q = input.value.trim();
+    currentSearch = q.length >= 3 ? q.toLowerCase() : '';
+    applyFilters();
+  });
+}
+
+// ─── Tag cloud ───────────────────────────────────────────────────────
+function renderTagCloud(promises) {
+  const cloud = document.getElementById('tag-cloud');
+  if (!cloud) return;
+
+  const tagCounts = {};
+  promises.forEach(p => {
+    (p.tags || []).forEach(tag => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  });
+
+  // Sort by count desc, then alphabetically
+  const sorted = Object.entries(tagCounts)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'hu'));
+
+  cloud.innerHTML = sorted.map(([tag, count]) => `
+    <button class="tag-pill" data-tag="${escHtml(tag)}" aria-pressed="false">
+      ${escHtml(tag)}<span class="tag-count">${count}</span>
+    </button>`).join('');
+
+  cloud.querySelectorAll('.tag-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+      const isActive = btn.getAttribute('aria-pressed') === 'true';
+      currentTag = isActive ? '' : tag;
+      cloud.querySelectorAll('.tag-pill').forEach(b => {
+        const active = b.dataset.tag === currentTag && currentTag !== '';
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      applyFilters();
+    });
+  });
+}
+
+// ─── Unified filter ──────────────────────────────────────────────────
+function applyFilters() {
+  const q = currentSearch;
   let anyVisible = false;
+
   document.querySelectorAll('.promise-item').forEach(item => {
-    const visible = filter === 'all' || item.dataset.status === filter;
+    const statusOk = currentFilter === 'all' || item.dataset.status === currentFilter;
+    const tagOk    = !currentTag ||
+      (item.dataset.tags && item.dataset.tags.split(',').includes(currentTag));
+    const searchOk = !q || (item.dataset.text && item.dataset.text.includes(q));
+    const visible  = statusOk && tagOk && searchOk;
     item.style.display = visible ? '' : 'none';
     if (visible) anyVisible = true;
   });
+
   document.querySelectorAll('.category-section').forEach(section => {
-    const has = [...section.querySelectorAll('.promise-item')].some(i => i.style.display !== 'none');
+    const has = [...section.querySelectorAll('.promise-item')]
+      .some(i => i.style.display !== 'none');
     section.style.display = has ? '' : 'none';
   });
+
   const empty = document.getElementById('empty-state');
   if (empty) empty.classList.toggle('visible', !anyVisible);
 }
@@ -392,11 +480,19 @@ function showToast(msg, isError = false) {
 }
 
 function scrollToPromise(id) {
-  // Make sure "Összes" filter is active so the item is visible
-  const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-  if (allBtn && currentFilter !== 'all') {
-    allBtn.click();
-  }
+  // Reset all active filters so the target item is always visible
+  currentFilter = 'all';
+  currentSearch = '';
+  currentTag    = '';
+  document.querySelectorAll('.filter-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.filter === 'all'));
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.value = '';
+  document.querySelectorAll('.tag-pill').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-pressed', 'false');
+  });
+  applyFilters();
 
   const target = document.querySelector(`.promise-item[data-id="${id}"]`);
   if (!target) return;

@@ -67,22 +67,22 @@
       <h1>Tisza Követő</h1>
       <p class="hero-subtitle">Nyomon követjük a Tisza Párt kampánya és kormányzása során tett vállalásait és azok megvalósulását.</p>
       <div class="stats-bar" id="stats-bar">
-        <div class="stat">
+        <div class="stat" data-filter="all" role="button" tabindex="0" aria-label="Összes vállalás megjelenítése">
           <span class="stat-num" id="stat-total">—</span>
           <span class="stat-label">vállalás</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat">
+        <div class="stat" data-filter="done" role="button" tabindex="0" aria-label="Teljesített vállalások megjelenítése">
           <span class="stat-num stat-done" id="stat-done">—</span>
           <span class="stat-label">teljesített</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat">
+        <div class="stat" data-filter="pending" role="button" tabindex="0" aria-label="Folyamatban lévő vállalások megjelenítése">
           <span class="stat-num stat-pending" id="stat-pending">—</span>
           <span class="stat-label">folyamatban</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat">
+        <div class="stat" data-filter="expired" role="button" tabindex="0" aria-label="Lejárt vállalások megjelenítése">
           <span class="stat-num stat-expired" id="stat-expired">—</span>
           <span class="stat-label">lejárt</span>
         </div>
@@ -122,6 +122,13 @@
     </div>
   </section>
 
+  <!-- Search bar -->
+  <div class="search-bar-wrap">
+    <input type="search" id="search-input" class="search-input"
+      placeholder="Keresés a vállalások között…"
+      autocomplete="off" aria-label="Keresés a vállalások között">
+  </div>
+
   <div class="filter-bar" id="filter-bar">
     <div class="filter-inner">
       <button class="filter-btn active" data-filter="all">Összes</button>
@@ -129,6 +136,11 @@
       <button class="filter-btn" data-filter="pending">Folyamatban</button>
       <button class="filter-btn" data-filter="expired">Lejárt</button>
     </div>
+  </div>
+
+  <!-- Tag cloud -->
+  <div class="tag-cloud-wrap">
+    <div class="tag-cloud" id="tag-cloud"></div>
   </div>
 
   <main class="main-content">
