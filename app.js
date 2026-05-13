@@ -261,6 +261,10 @@ function attachItemListeners() {
           wrap.innerHTML = `
             <form class="comment-form" data-promise-id="${id}">
               <textarea name="comment" placeholder="Írd le megfigyelésedet vagy megjegyzésedet…" maxlength="2000" required></textarea>
+              <label class="fulfilled-check">
+                <input type="checkbox" name="fulfilled">
+                <span>Szerintem ez teljesült</span>
+              </label>
               <div class="comment-form-footer">
                 <span class="comment-form-note">Nem jelenik meg nyilvánosan — szerkesztői célra tároljuk.</span>
                 <button type="submit" class="comment-submit">Küldés</button>
@@ -282,6 +286,7 @@ async function handleCommentSubmit(e) {
   const form      = e.currentTarget;
   const promiseId = Number(form.dataset.promiseId);
   const comment   = form.elements.comment.value.trim();
+  const fulfilled = form.elements.fulfilled.checked;
   const btn       = form.querySelector('.comment-submit');
   if (!comment) return;
 
@@ -299,7 +304,7 @@ async function handleCommentSubmit(e) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ promise_id: promiseId, comment }),
+      body: JSON.stringify({ promise_id: promiseId, comment, fulfilled }),
     });
     if (!res.ok) throw new Error('Szerverhiba');
 

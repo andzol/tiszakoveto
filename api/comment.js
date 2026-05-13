@@ -33,7 +33,7 @@ module.exports = async function handler(req, res) {
   if (!userEmail) return res.status(401).json({ error: 'Could not identify user' });
 
   // ── Validate body ──────────────────────────────────────────────────
-  const { promise_id, comment } = req.body ?? {};
+  const { promise_id, comment, fulfilled } = req.body ?? {};
   if (!promise_id || typeof promise_id !== 'number')
     return res.status(400).json({ error: 'promise_id required' });
   if (!comment || typeof comment !== 'string' || !comment.trim())
@@ -53,6 +53,7 @@ module.exports = async function handler(req, res) {
     body: JSON.stringify({
       promise_id,
       comment: comment.trim(),
+      fulfilled: fulfilled === true,
       user_email: userEmail,
       user_agent: req.headers['user-agent'] ?? null,
     }),
