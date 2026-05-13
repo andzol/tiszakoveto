@@ -413,6 +413,21 @@ function scrollToPromise(id) {
   target.addEventListener('animationend', () => target.classList.remove('flashing'), { once: true });
 }
 
+// ─── Mobile navbar: hide subscribe form on scroll ────────────────────
+(function setupScrollNav() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+
 function escHtml(str) {
   return str
     .replace(/&/g, '&amp;').replace(/</g, '&lt;')
