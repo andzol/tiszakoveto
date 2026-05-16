@@ -124,7 +124,7 @@ A `donedate` mindig a **hatályba lépés dátuma**, nem a kihirdetésé és nem
 
 ## Új vállalás hozzáadása
 
-1. Keresd meg a legmagasabb `id` értéket a JSON-ben (jelenleg: 89)
+1. Keresd meg a legmagasabb `id` értéket a JSON-ben (jelenleg: 92)
 2. Az új elem `id`-ja legyen a következő szám
 3. Szúrd be a megfelelő kategória végére
 4. Kötelező mezők: `id`, `category`, `todo`, `isdone`, `deadline`
