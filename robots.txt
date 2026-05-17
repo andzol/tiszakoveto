@@ -10,4 +10,10 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
 Sitemap: https://tiszakoveto.hu/sitemap.xml
