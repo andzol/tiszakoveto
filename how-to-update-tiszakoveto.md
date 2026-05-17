@@ -153,11 +153,40 @@ A `donedate` mindig a **hatályba lépés dátuma**, nem a kihirdetésé és nem
 
 ---
 
+## Felhasználói javaslatok (suggestions) kezelése
+
+A látogatók új vállalásokat javasolhatnak az oldalon. Ezek a Supabase `suggestions` táblájába kerülnek.
+
+**Lekérdezés — csak a még nem kezelt javaslatok:**
+```bash
+curl -s "https://uffjqxhlzcrixgduqyuh.supabase.co/rest/v1/suggestions?select=*&handled=eq.false&order=created_at.desc" \
+  -H "apikey: <service_key>" \
+  -H "Authorization: Bearer <service_key>"
+```
+
+**Feldolgozás lépései:**
+1. Nézd át az új javaslatot — szerepel-e már a `vallalasok.json`-ban?
+2. Ha **igen** → jelöld kezeltnek, skip
+3. Ha **nem, de releváns** → add hozzá a JSON-be (következő szabad id), majd jelöld kezeltnek
+4. Ha **nem releváns** → jelöld kezeltnek
+
+**Kezeltre jelölés (PATCH):**
+```bash
+curl -s -X PATCH "https://uffjqxhlzcrixgduqyuh.supabase.co/rest/v1/suggestions?id=eq.<ID>" \
+  -H "apikey: <service_key>" \
+  -H "Authorization: Bearer <service_key>" \
+  -H "Content-Type: application/json" \
+  -d '{"handled": true}'
+```
+
+---
+
 ## Heti ellenőrzési rutin (javasolt)
 
 1. **Magyar Közlöny RSS feed** — iratkozz fel a [magyarkozlony.hu](https://www.magyarkozlony.hu) RSS csatornájára, hogy azonnal értesülj új kiadványokról
 2. **parlament.hu Irományok** — hetente egyszer nézd át a benyújtott törvényjavaslatokat
 3. **NJT kulcsszó-keresés** — havonta futtass keresést a fontosabb vállalások kulcsszavaira
+4. **Suggestions DB** — kérdezd le az új (handled=false) javaslatokat, dolgozd fel őket
 
 ---
 
