@@ -94,6 +94,15 @@ async function loadPromises() {
     const res = await fetch('vallalasok.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allPromises = await res.json();
+
+    // Last updated from HTTP header
+    const lastMod = res.headers.get('Last-Modified');
+    if (lastMod) {
+      const d = new Date(lastMod);
+      const label = `${d.getFullYear()}. ${HU_MONTHS[d.getMonth()]} ${d.getDate()}.`;
+      const el = document.getElementById('last-updated');
+      if (el) el.textContent = `Utoljára frissítve: ${label}`;
+    }
     renderAll(allPromises);
     renderHighlights(allPromises);
   } catch (err) {

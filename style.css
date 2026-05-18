@@ -277,6 +277,15 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.7;
 }
 
+/* Last updated */
+.last-updated {
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.03em;
+}
+
 /* Stats */
 .stats-bar {
   display: inline-flex;
