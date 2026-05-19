@@ -544,6 +544,13 @@ a { color: inherit; text-decoration: none; }
   margin-top: 0.25rem;
   line-height: 1.4;
 }
+.promise-note a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+.promise-note a:hover { color: var(--river-deep); }
 .promise-donedate {
   font-size: 0.72rem;
   color: var(--done-color);

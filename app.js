@@ -212,7 +212,7 @@ function renderAll(promises) {
       const donedateHtml = item.donedate
         ? `<div class="promise-donedate">Teljesítve: ${fmtDate(item.donedate)}</div>` : '';
       const noteHtml = item.note
-        ? `<p class="promise-note">${escHtml(item.note)}</p>` : '';
+        ? `<p class="promise-note">${linkify(item.note)}</p>` : '';
 
       li.innerHTML = `
         <div class="promise-row">
@@ -532,6 +532,13 @@ function scrollToPromise(id) {
     });
   }, { passive: true });
 })();
+
+function linkify(str) {
+  return escHtml(str).replace(
+    /https?:\/\/[^\s<"]+/g,
+    url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  );
+}
 
 function escHtml(str) {
   return str
