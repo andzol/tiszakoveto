@@ -7,4 +7,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 credentials.md
+mk-naplo.md
 .env.temp
