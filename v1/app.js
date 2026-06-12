@@ -28,8 +28,6 @@ function fmtDate(iso) {
   return `${y}. ${HU_MONTHS[parseInt(m, 10) - 1]} ${parseInt(d, 10)}.`;
 }
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 let currentFilter = 'all';
 let currentSearch = '';
 let currentTag    = '';
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupSearch();
   setupSubscribeForm();
   setupAuthButtons();
-  setupScrollProgress();
 });
 
 // ─── Auth ────────────────────────────────────────────────────────────
@@ -94,7 +91,7 @@ function setupAuthButtons() {
 // ─── Data ────────────────────────────────────────────────────────────
 async function loadPromises() {
   try {
-    const res = await fetch('/vallalasok.json');
+    const res = await fetch('vallalasok.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allPromises = await res.json();
 
@@ -168,11 +165,10 @@ function renderAll(promises) {
     else if (s === 'expired') totalExpired++;
     else totalPending++;
   });
-
-  animateCount('stat-total', promises.length);
-  animateCount('stat-done', totalDone);
-  animateCount('stat-pending', totalPending);
-  animateCount('stat-expired', totalExpired);
+  document.getElementById('stat-total').textContent   = promises.length;
+  document.getElementById('stat-done').textContent    = totalDone;
+  document.getElementById('stat-pending').textContent = totalPending;
+  document.getElementById('stat-expired').textContent = totalExpired;
 
   // Group by category
   const groups = {};
@@ -187,7 +183,7 @@ function renderAll(promises) {
   for (const [catKey, items] of Object.entries(groups)) {
     const meta = CATEGORY_META[catKey] || { label: catKey, icon: '•' };
     const section = document.createElement('section');
-    section.className = 'category-section reveal';
+    section.className = 'category-section';
     section.dataset.category = catKey;
 
     section.innerHTML = `
@@ -245,57 +241,6 @@ function renderAll(promises) {
   attachItemListeners();
   renderTagCloud(allPromises);
   applyFilters();
-  setupScrollReveal();
-}
-
-// ─── Animated stat counters ──────────────────────────────────────────
-function animateCount(id, target) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  if (prefersReducedMotion) { el.textContent = target; return; }
-
-  const start = 0;
-  const duration = 900;
-  const startTime = performance.now();
-
-  function tick(now) {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
-    el.textContent = Math.round(start + (target - start) * eased);
-    if (progress < 1) requestAnimationFrame(tick);
-    else el.textContent = target;
-  }
-  requestAnimationFrame(tick);
-
-  // Safety net: ensure the final value lands even if rAF is throttled
-  // (e.g. tab opened in the background)
-  setTimeout(() => { el.textContent = target; }, duration + 500);
-}
-
-// ─── Scroll reveal (category sections) ───────────────────────────────
-function setupScrollReveal() {
-  const sections = document.querySelectorAll('.category-section.reveal');
-  if (!('IntersectionObserver' in window) || prefersReducedMotion) {
-    sections.forEach(s => s.classList.add('in-view'));
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
-
-  sections.forEach(s => observer.observe(s));
-
-  // Safety net: never leave content invisible (e.g. backgrounded tabs
-  // where IntersectionObserver/rAF callbacks may be delayed)
-  setTimeout(() => {
-    sections.forEach(s => s.classList.add('in-view'));
-    observer.disconnect();
-  }, 1500);
 }
 
 // ─── Item event listeners ────────────────────────────────────────────
@@ -402,23 +347,8 @@ function setupFilters() {
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
       applyFilters();
-      updateFilterIndicator();
     });
   });
-  // Position indicator after layout settles
-  window.addEventListener('resize', updateFilterIndicator);
-  requestAnimationFrame(() => requestAnimationFrame(updateFilterIndicator));
-  setTimeout(updateFilterIndicator, 300);
-}
-
-function updateFilterIndicator() {
-  const indicator = document.querySelector('.filter-indicator');
-  const active = document.querySelector('.filter-btn.active');
-  if (!indicator || !active) return;
-  const parentRect = active.parentElement.getBoundingClientRect();
-  const rect = active.getBoundingClientRect();
-  indicator.style.left  = `${rect.left - parentRect.left}px`;
-  indicator.style.width = `${rect.width}px`;
 }
 
 // ─── Stat clicks ─────────────────────────────────────────────────────
@@ -432,7 +362,6 @@ function setupStatClicks() {
       });
       currentFilter = filter;
       applyFilters();
-      updateFilterIndicator();
       // Scroll to main content list
       const main = document.querySelector('.main-content');
       if (main) {
@@ -566,7 +495,6 @@ function scrollToPromise(id) {
   currentTag    = '';
   document.querySelectorAll('.filter-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.filter === 'all'));
-  updateFilterIndicator();
   const searchInput = document.getElementById('search-input');
   if (searchInput) searchInput.value = '';
   document.querySelectorAll('.tag-pill').forEach(b => {
@@ -577,9 +505,6 @@ function scrollToPromise(id) {
 
   const target = document.querySelector(`.promise-item[data-id="${id}"]`);
   if (!target) return;
-
-  // Ensure the section is revealed before scrolling/flashing
-  target.closest('.category-section')?.classList.add('in-view');
 
   // Offset for sticky navbar + filter bar (~110px)
   const offset = 120;
@@ -593,25 +518,20 @@ function scrollToPromise(id) {
   target.addEventListener('animationend', () => target.classList.remove('flashing'), { once: true });
 }
 
-// ─── Navbar + scroll progress ────────────────────────────────────────
-function setupScrollProgress() {
+// ─── Mobile navbar: hide subscribe form on scroll ────────────────────
+(function setupScrollNav() {
   const navbar = document.querySelector('.navbar');
-  const progress = document.getElementById('scroll-progress');
+  if (!navbar) return;
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
-      if (progress) {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-        progress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
       ticking = false;
     });
   }, { passive: true });
-}
+})();
 
 function linkify(str) {
   return escHtml(str).replace(
@@ -653,6 +573,8 @@ function escHtml(str) {
     // Reset conditional fields
     donedateGroup().style.display = 'none';
     deadlineGroup().style.display = '';
+    document.getElementById('sg-donedate').querySelector
+      ? null : null; // just reset
   }
 
   function refreshAuthState() {
@@ -677,6 +599,7 @@ function escHtml(str) {
   });
 
   // Update auth state when user logs in/out
+  const _origSetUser = setUser;
   window._suggestAuthRefresh = refreshAuthState;
 
   // Toggle donedate / deadline fields based on radio

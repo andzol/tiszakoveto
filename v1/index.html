@@ -19,8 +19,8 @@
   <meta name="twitter:image" content="https://www.tiszakoveto.hu/og-image-x.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +29,6 @@
     <span class="tc-red"></span>
     <span class="tc-white"></span>
     <span class="tc-green"></span>
-    <span class="tc-progress" id="scroll-progress"></span>
   </div>
 
   <nav class="navbar">
@@ -71,30 +70,28 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
-    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-eyebrow" data-reveal>Politikai elszámoltathatóság</p>
-      <h1 data-reveal>Tisza Követő</h1>
-      <p class="hero-subtitle" data-reveal>Nyomon követjük a Tisza Párt kampánya és kormányzása során tett vállalásait és azok megvalósulását.</p>
-      <div class="stats-bar" id="stats-bar" data-reveal>
+      <p class="hero-eyebrow">Politikai elszámoltathatóság</p>
+      <h1>Tisza Követő</h1>
+      <p class="hero-subtitle">Nyomon követjük a Tisza Párt kampánya és kormányzása során tett vállalásait és azok megvalósulását.</p>
+      <div class="stats-bar" id="stats-bar">
         <div class="stat" data-filter="all" role="button" tabindex="0" aria-label="Összes vállalás megjelenítése">
-          <span class="stat-num" id="stat-total" data-count="0">—</span>
+          <span class="stat-num" id="stat-total">—</span>
           <span class="stat-label">vállalás</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat" data-filter="done" role="button" tabindex="0" aria-label="Teljesített vállalások megjelenítése">
-          <span class="stat-num stat-done" id="stat-done" data-count="0">—</span>
+          <span class="stat-num stat-done" id="stat-done">—</span>
           <span class="stat-label">teljesített</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat" data-filter="pending" role="button" tabindex="0" aria-label="Folyamatban lévő vállalások megjelenítése">
-          <span class="stat-num stat-pending" id="stat-pending" data-count="0">—</span>
+          <span class="stat-num stat-pending" id="stat-pending">—</span>
           <span class="stat-label">folyamatban</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat" data-filter="expired" role="button" tabindex="0" aria-label="Lejárt vállalások megjelenítése">
-          <span class="stat-num stat-expired" id="stat-expired" data-count="0">—</span>
+          <span class="stat-num stat-expired" id="stat-expired">—</span>
           <span class="stat-label">lejárt</span>
         </div>
       </div>
@@ -102,8 +99,7 @@
     </div>
     <div class="hero-wave" aria-hidden="true">
       <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path class="wave-back" d="M0,44 C240,76 480,8 720,40 C960,72 1200,8 1440,40 L1440,72 L0,72 Z" fill="#5b8db8" opacity="0.55"/>
-        <path class="wave-front" d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#5b8db8"/>
+        <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#5b8db8"/>
       </svg>
     </div>
   </header>
@@ -111,7 +107,7 @@
   <!-- Highlights section -->
   <section class="highlights">
     <div class="highlights-inner">
-      <div class="highlight-card card-done" data-reveal>
+      <div class="highlight-card card-done">
         <div class="highlight-card-wave" aria-hidden="true">
           <svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path d="M0,40 C100,70 200,10 300,40 C350,55 380,25 400,40 L400,80 L0,80 Z" fill="rgba(39,174,110,0.08)"/>
@@ -125,12 +121,7 @@
           <li class="highlight-empty">Még nincs teljesített vállalás.</li>
         </ul>
       </div>
-      <div class="highlight-card card-new" data-reveal>
-        <div class="highlight-card-wave" aria-hidden="true">
-          <svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,40 C100,70 200,10 300,40 C350,55 380,25 400,40 L400,80 L0,80 Z" fill="rgba(33,118,174,0.07)"/>
-          </svg>
-        </div>
+      <div class="highlight-card card-new">
         <h3 class="highlight-title">
           <span class="highlight-icon new">◆</span>
           Újonnan bekerült
@@ -153,7 +144,6 @@
       <button class="filter-btn" data-filter="done">Teljesített</button>
       <button class="filter-btn" data-filter="pending">Folyamatban</button>
       <button class="filter-btn" data-filter="expired">Lejárt</button>
-      <span class="filter-indicator" aria-hidden="true"></span>
     </div>
   </div>
 
