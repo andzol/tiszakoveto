@@ -510,7 +510,7 @@
     "id": 32,
     "category": "oktatas_es_tudomany",
     "todo": "MCC részére juttatott állami vagyon visszaszerzése",
-    "note": "T/51 törvényjavaslat benyújtva (2026. máj. 20.) — az Alaptörvény-módosítás az MCC részére juttatott állami vagyon visszavételét is tartalmazza. Magyarország Alaptörvényének tizenhatodik módosítása (Magyar Közlöny 2026/74., hatályos 2026. június 20-tól) — kimondja, hogy a közfeladatot ellátó közérdekű vagyonkezelő alapítványok megszűnésekor az állami eredetű vagyon ingyenesen visszaszáll az államra. 2026. évi XVIII. törvény (Magyar Közlöny 2026/80.) — a Mathias Corvinus Collegium Alapítvány a 2021. évi IX. törvény új 2. mellékletének (\"közfeladatként felsőoktatási tevékenységet nem ellátó alapítványok\") 13. tételeként szerepel; a nyilvántartó bíróság 2026. augusztus 31-i hatállyal törli az alapítványt, vagyona visszaszáll az államra. Még nem következett be — figyelni kell a 2026.08.31-i tényleges megszűnést.",
+    "note": "T/51 törvényjavaslat benyújtva (2026. máj. 20.) — az Alaptörvény-módosítás az MCC részére juttatott állami vagyon visszavételét is tartalmazza. Magyarország Alaptörvényének tizenhatodik módosítása (Magyar Közlöny 2026/74., hatályos 2026. június 20-tól) — kimondja, hogy a közfeladatot ellátó közérdekű vagyonkezelő alapítványok megszűnésekor az állami eredetű vagyon ingyenesen visszaszáll az államra. 2026. évi XVIII. törvény (Magyar Közlöny 2026/80.) — a Mathias Corvinus Collegium Alapítvány a 2021. évi IX. törvény új 2. mellékletének (\"közfeladatként felsőoktatási tevékenységet nem ellátó alapítványok\") 13. tételeként szerepel; a nyilvántartó bíróság 2026. augusztus 31-i hatállyal törli az alapítványt, vagyona visszaszáll az államra. Még nem következett be. 1226/2026. (VII. 14.) Korm. határozat (MK 2026/89.) — a Miniszterelnökséget vezető miniszter döntött az MCC Alapítvány 2026. július 31-i hatályú megszüntetéséről; közfeladatait az oktatási és gyermekügyi miniszter, ill. a társadalmi kapcsolatokért és kultúráért felelős miniszter veszi át (2026. aug. 31-ig); elszámolási biztos: Veres Ildikó; az MCC tulajdonában lévő gazdasági társaságokban az állam nevében a pénzügyminiszter (ill. ingatlanfejlesztők esetén a közlekedési és beruházási miniszter) gyakorolja a tulajdonosi jogokat. Figyelni kell a 2026.07.31-i tényleges megszűnést és a vagyon visszavételét.",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
@@ -1081,7 +1081,8 @@
     "deadline": "2030-03-30",
     "tags": [
       "önkormányzat"
-    ]
+    ],
+    "note": "2026. évi XXIX. törvény (MK 2026/89., hatályos 2026. július 19-től) — hatályon kívül helyezi a fővárosi önkormányzat csődjének elkerülését szolgáló hitel nyújtásáról szóló 2025. évi CXXXIV. törvényt; célja \"a Fővárossal való együttműködés rendezése, a pozitív partneri együttműködés keretei megalkotása\". Ez előkészíti, de még nem maga a Budapest-törvény."
   },
   {
     "id": 75,
