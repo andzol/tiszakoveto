@@ -3,9 +3,9 @@
     "id": 1,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Európai Ügyészséghez való csatlakozás",
-    "note": "1142/2026. (V. 14.) Korm. határozat — a csatlakozás előkészítéséről döntött a kormány.",
-    "isdone": false,
-    "donedate": null,
+    "note": "1142/2026. (V. 14.) Korm. határozat — a csatlakozás előkészítéséről döntött a kormány. Az Európai Ügyészség testülete (EPPO College) 2026. július 10-én jóváhagyta a magyar kormány csatlakozási kérelmét; a kormány.hu közleménye szerint \"Magyarország csatlakozott az Európai Ügyészséghez\". Következő lépés: a magyar hatóságok három jelöltet neveznek meg, akik közül az EU Tanácsa kiválasztja a magyar európai ügyészt; az ügyész kinevezés után 20 nappal kezdi meg munkáját, és 2021. június 1-je utáni ügyeket vizsgálhat. Engedélyező jogszabály a Közlönyben még nem jelent meg.",
+    "isdone": true,
+    "donedate": "2026-07-10",
     "deadline": "2030-03-30",
     "tags": [
       "EU",
