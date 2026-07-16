@@ -570,8 +570,8 @@
   {
     "id": 36,
     "category": "szocialis_halo_es_csaladtamogatas",
-    "todo": "50 ezer forint értékű kelengye biztosítása minden újszülöttnek és 100 ezer forint iskolakezdési támogatás a rászorulóknak",
-    "note": "1169/2026. (V. 26.) Korm. határozat — a kormány döntött a 100 ezer forintos iskolakezdési támogatás bevezetésének előkészítéséről; javaslat határideje: 2026. június 15.",
+    "todo": "50 ezer forint értékű kelengye biztosítása minden újszülöttnek",
+    "note": "A TISZA program ígérete: minden újszülött szülei egyszeri 50 000 Ft értékű \"Gyermekem született!\" kelengyecsomagot kapnak. Bevezetéséről 2026 júliusáig nincs hír — még nem indult el.",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
@@ -1137,5 +1137,19 @@
     "donedate": null,
     "deadline": "2030-03-30",
     "tags": []
+  },
+  {
+    "id": 98,
+    "category": "szocialis_halo_es_csaladtamogatas",
+    "todo": "100 ezer forint iskolakezdési támogatás a rászorulóknak",
+    "note": "1169/2026. (V. 26.) Korm. határozat — a kormány döntött a bevezetés előkészítéséről; javaslat határideje: 2026. június 15. Magyar Péter 2026. július 1-jén bejelentette a bevezetést: ~400 ezer rászoruló gyermek jogosult, az első 50 000 Ft legkésőbb 2026. augusztus 24-ig kerül utalásra (Magyar Államkincstár), a második 50 000 Ft novemberig utalvány formájában. Végrehajtási rendelet még nem jelent meg a Közlönyben.",
+    "isdone": false,
+    "donedate": null,
+    "deadline": "2030-03-30",
+    "tags": [
+      "szociális",
+      "gyermek",
+      "oktatás"
+    ]
   }
 ]
