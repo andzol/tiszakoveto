@@ -23,7 +23,8 @@
     "tags": [
       "korrupció",
       "átláthatóság"
-    ]
+    ],
+    "note": "Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — az Alaptörvény új 42. cikke alkotmányos szinten létrehozza a Nemzeti Vagyonvisszaszerzési és Vagyonvédelmi Hivatal intézményét: független, közvádlóként az állam büntetőigényét érvényesítő szerv, amely nyomozással összefüggő jogokat gyakorol, közvádatot képvisel, és közvagyon-visszaszerzési feladatokat lát el. Elnökét és elnökhelyetteseit az Országgyűlés kétharmados szavazattal hat évre választja. A Hivatal szervezetéről és működéséről sarkalatos törvény rendelkezik — az még nem jelent meg."
   },
   {
     "id": 3,
@@ -144,7 +145,7 @@
     "id": 78,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Igazságszolgáltatás függetlenségének helyreállítása — bírói függetlenség és az Alkotmánybíróság függetlenségének biztosítása (Bibó István Program)",
-    "note": "2026. évi XV. törvény (MK 60. szám) — az Országgyűlés törvénnyel visszavonta Magyarország kilépését a Nemzetközi Büntetőbíróságból (ICC); hatályba lépett: 2026. május 29.",
+    "note": "2026. évi XV. törvény (MK 60. szám) — az Országgyűlés törvénnyel visszavonta Magyarország kilépését a Nemzetközi Büntetőbíróságból (ICC); hatályba lépett: 2026. május 29. Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — jelentős igazságszolgáltatási reformok: (1) OBH elnök: 6 évre, nem újraválasztható, bírák által jelölt 3 személyből köztársasági elnök javaslatára, kétharmados szavazat; (2) Kúria elnök: azonos szabályok; (3) Alkotmánybíróság: 15 tag, 9 évre, nem újraválasztható, 70. életévnél megszűnik a megbízatás — akik a hatálybalépéskor már betöltötték a 70. évet, megbízatásuk 2026. szeptember 19-én szűnik meg. Végrehajtó sarkalatos törvények még szükségesek.",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
@@ -168,7 +169,7 @@
     "id": 80,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Titkosszolgálatok decentralizálása és a Pegasus/Candiru-megfigyelési ügy kivizsgálása",
-    "note": "1139/2026. (V. 14.) Korm. határozat — a titkosszolgálatok tevékenységének felülvizsgálatáról döntött a kormány. 1173/2026. (V. 26.) Korm. határozat + 27/2026. ME határozat — a TEK feladatellátásának felülvizsgálatáról döntött a kormány; Magyar Péter felmentette Hajdu Jánost, a TEK főigazgatóját. 32–35/2026. (VI. 12.) ME határozatok — Magyar Péter 2026. június 13–15-i hatállyal felmentette az Alkotmányvédelmi Hivatal (dr. Bárdos Szabolcs), az Információs Hivatal (dr. Oláh Krisztián), a Nemzetbiztonsági Szakszolgálat (dr. Kiss Csaba) és a Katonai Nemzetbiztonsági Szolgálat (Tajti Norbert) főigazgatóit — a teljes titkosszolgálati operatív vezetői garnitúra leváltása megtörtént. 66/2026. (VII. 1.) ME határozat (Magyar Közlöny 2026/83.) — Magyar Péter 2026. július 2-ai hatállyal felmentette dr. Hatala Annát, a Nemzeti Információs Központ (a polgári titkosszolgálatokat koordináló szerv) főigazgatóját — a titkosszolgálati-koordinációs vezető leváltásával a teljes hírszerzési-koordinációs garnitúra cseréje is lezárult.",
+    "note": "1139/2026. (V. 14.) Korm. határozat — a titkosszolgálatok tevékenységének felülvizsgálatáról döntött a kormány. 1173/2026. (V. 26.) Korm. határozat + 27/2026. ME határozat — a TEK feladatellátásának felülvizsgálatáról döntött a kormány; Magyar Péter felmentette Hajdu Jánost, a TEK főigazgatóját. 32–35/2026. (VI. 12.) ME határozatok — Magyar Péter 2026. június 13–15-i hatállyal felmentette az Alkotmányvédelmi Hivatal (dr. Bárdos Szabolcs), az Információs Hivatal (dr. Oláh Krisztián), a Nemzetbiztonsági Szakszolgálat (dr. Kiss Csaba) és a Katonai Nemzetbiztonsági Szolgálat (Tajti Norbert) főigazgatóit — a teljes titkosszolgálati operatív vezetői garnitúra leváltása megtörtént. 66/2026. (VII. 1.) ME határozat (Magyar Közlöny 2026/83.) — Magyar Péter 2026. július 2-ai hatállyal felmentette dr. Hatala Annát, a Nemzeti Információs Központ (a polgári titkosszolgálatokat koordináló szerv) főigazgatóját — a titkosszolgálati-koordinációs vezető leváltásával a teljes hírszerzési-koordinációs garnitúra cseréje is lezárult. 67/2026. (VII. 17.) ME határozat (MK 2026/90.) — Magyar Péter dr. Annus Zsolt Antalt 2026. július 19-ei hatállyal az Alkotmányvédelmi Hivatal főigazgatójává kinevezte. 68/2026. (VII. 17.) ME határozat (MK 2026/90.) — dr. Tóth Szabolcsot 2026. július 19-ei hatállyal a Nemzetbiztonsági Szakszolgálat főigazgatójává kinevezte — az összes polgári titkosszolgálat új operatív vezetője megkapta a kinevezést.",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
