@@ -332,7 +332,7 @@
   {
     "id": 19,
     "category": "adopolitika",
-    "todo": "Vényköteles gyógyszerek áfájának 0%-ra, valamint a tűzifa és egészséges élelmiszerek áfájának 5%-ra csökkentése",
+    "todo": "Tűzifa és egészséges élelmiszerek áfájának 5%-ra csökkentése",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
@@ -1151,6 +1151,19 @@
       "szociális",
       "gyermek",
       "oktatás"
+    ]
+  },
+  {
+    "id": 99,
+    "category": "adopolitika",
+    "todo": "Vényköteles gyógyszerek ÁFÁ-jának eltörlése (0%-ra csökkentése)",
+    "note": "Szóban elhangzott TISZA-vállalás.",
+    "isdone": false,
+    "donedate": null,
+    "deadline": "2030-03-30",
+    "tags": [
+      "adó",
+      "egészségügy"
     ]
   }
 ]
