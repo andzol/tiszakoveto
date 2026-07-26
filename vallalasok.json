@@ -1144,9 +1144,9 @@
     "id": 98,
     "category": "szocialis_halo_es_csaladtamogatas",
     "todo": "100 ezer forint iskolakezdési támogatás a rászorulóknak",
-    "note": "1169/2026. (V. 26.) Korm. határozat — a kormány döntött a bevezetés előkészítéséről; javaslat határideje: 2026. június 15. Magyar Péter 2026. július 1-jén bejelentette a bevezetést: ~400 ezer rászoruló gyermek jogosult, az első 50 000 Ft legkésőbb 2026. augusztus 24-ig kerül utalásra (Magyar Államkincstár), a második 50 000 Ft novemberig utalvány formájában. Végrehajtási rendelet még nem jelent meg a Közlönyben.",
-    "isdone": false,
-    "donedate": null,
+    "note": "1169/2026. (V. 26.) Korm. határozat — a kormány döntött a bevezetés előkészítéséről; javaslat határideje: 2026. június 15. Magyar Péter 2026. július 1-jén bejelentette a bevezetést. 2026. évi XXXIII. törvény + 114/2026. (VII. 23.) Korm. rendelet (MK 2026/97., hatályos 2026. július 24-től) — törvényi és rendeleti keret hatályba lépett. ~400 ezer rászoruló gyermek jogosult (rendszeres gyermekvédelmi kedvezményre jogosultak, SNI-s, árvák stb.); első 50 000 Ft 2026. augusztus 24-ig kerül utalásra (Magyar Államkincstár), második 50 000 Ft november 30-ig iskolakezdési utalvány formájában.",
+    "isdone": true,
+    "donedate": "2026-07-24",
     "deadline": "2030-03-30",
     "tags": [
       "szociális",
