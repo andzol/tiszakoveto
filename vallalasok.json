@@ -17,14 +17,14 @@
     "id": 2,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Nemzeti Vagyonvisszaszerzési és Védelmi Hivatal létrehozása",
-    "isdone": false,
-    "donedate": null,
+    "isdone": true,
+    "donedate": "2026-07-29",
     "deadline": "2030-03-30",
     "tags": [
       "korrupció",
       "átláthatóság"
     ],
-    "note": "Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — az Alaptörvény új 42. cikke alkotmányos szinten létrehozza a Nemzeti Vagyonvisszaszerzési és Vagyonvédelmi Hivatal intézményét: független, közvádlóként az állam büntetőigényét érvényesítő szerv, amely nyomozással összefüggő jogokat gyakorol, közvádatot képvisel, és közvagyon-visszaszerzési feladatokat lát el. Elnökét és elnökhelyetteseit az Országgyűlés kétharmados szavazattal hat évre választja. A Hivatal szervezetéről és működéséről sarkalatos törvény rendelkezik — az még nem jelent meg."
+    "note": "Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — az Alaptörvény új 42. cikke alkotmányos szinten létrehozza a Nemzeti Vagyonvisszaszerzési és Vagyonvédelmi Hivatal intézményét: független, közvádlóként az állam büntetőigényét érvényesítő szerv, amely nyomozással összefüggő jogokat gyakorol, közvádatot képvisel, és közvagyon-visszaszerzési feladatokat lát el. Elnökét és elnökhelyetteseit az Országgyűlés kétharmados szavazattal hat évre választja. 2026. évi XXXIV. törvény (MK 2026/100., hatályos 2026-07-29) — sarkalatos törvény a Nemzeti Vagyonvisszaszerzési és Vagyonvédelmi Hivatalról; az Alaptörvény 42. cikk (7) bekezdése alapján sarkalatos; I–IV. fejezet (a Hivatal szervezete és hatáskörei) a kihirdetést követő napon lép hatályba; az OGY 30 napon belül megválasztja az elnököt és elnökhelyetteseket."
   },
   {
     "id": 3,
@@ -145,7 +145,7 @@
     "id": 78,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Igazságszolgáltatás függetlenségének helyreállítása — bírói függetlenség és az Alkotmánybíróság függetlenségének biztosítása (Bibó István Program)",
-    "note": "2026. évi XV. törvény (MK 60. szám) — az Országgyűlés törvénnyel visszavonta Magyarország kilépését a Nemzetközi Büntetőbíróságból (ICC); hatályba lépett: 2026. május 29. Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — jelentős igazságszolgáltatási reformok: (1) OBH elnök: 6 évre, nem újraválasztható, bírák által jelölt 3 személyből köztársasági elnök javaslatára, kétharmados szavazat; (2) Kúria elnök: azonos szabályok; (3) Alkotmánybíróság: 15 tag, 9 évre, nem újraválasztható, 70. életévnél megszűnik a megbízatás — akik a hatálybalépéskor már betöltötték a 70. évet, megbízatásuk 2026. szeptember 19-én szűnik meg. Végrehajtó sarkalatos törvények még szükségesek.",
+    "note": "2026. évi XV. törvény (MK 60. szám) — az Országgyűlés törvénnyel visszavonta Magyarország kilépését a Nemzetközi Büntetőbíróságból (ICC); hatályba lépett: 2026. május 29. Magyarország Alaptörvényének tizenhetedik módosítása (MK 2026/92., hatályos 2026. július 19-től) — jelentős igazságszolgáltatási reformok: (1) OBH elnök: 6 évre, nem újraválasztható, bírák által jelölt 3 személyből köztársasági elnök javaslatára, kétharmados szavazat; (2) Kúria elnök: azonos szabályok; (3) Alkotmánybíróság: 15 tag, 9 évre, nem újraválasztható, 70. életévnél megszűnik a megbízatás — akik a hatálybalépéskor már betöltötték a 70. évet, megbízatásuk 2026. szeptember 19-én szűnik meg. Végrehajtó sarkalatos törvények még szükségesek. 41/2026. (VII. 27.) OGY határozat (MK 2026/99.): az OGY Dr. Sonnevend Pált az Alkotmánybíróság tagjává 2026. július 28-i hatállyal megválasztotta.",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
