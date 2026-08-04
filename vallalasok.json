@@ -235,7 +235,8 @@
     "deadline": "2026-08-31",
     "tags": [
       "EU"
-    ]
+    ],
+    "note": "2026. évi XXXV. törvény (MK 2026/102., hatályos 2026-07-31) — RRF adóintézkedések: bizalmi vagyonkezelés SZJA-adómentességének megszüntetése, magánalapítványi adórendszer reformja, kriptoeszköz-adózás; 2026. évi XXXVI. törvény (MK 2026/102.) — RRF energetikai mérföldkövek: szélerőmű beruházások engedélyezési eljárásának egyszerűsítése, geotermikus energia engedélyezési reform; 2026. évi XXXVII. törvény (MK 2026/102.) — RRF közlekedési mérföldkövek: Gördülőállomány-kezelő Társaság + Országos Közlekedésszervező jogi kereteinek megteremtése; 117/2026. Korm. rendelet (MK 2026/103.) — NAV elnöki jogállásának befolyásmentes szabályozása (RRF-feltétel); 1239/2026. Korm. határozat (MK 2026/105.) — magánpiaci hitelezési állami garancia rendszer reformja (határidő: 2026-08-31). Tényleges forráslehívás még folyamatban."
   },
   {
     "id": 12,
@@ -512,7 +513,7 @@
     "id": 32,
     "category": "oktatas_es_tudomany",
     "todo": "MCC részére juttatott állami vagyon visszaszerzése",
-    "note": "T/51 törvényjavaslat benyújtva (2026. máj. 20.) — az Alaptörvény-módosítás az MCC részére juttatott állami vagyon visszavételét is tartalmazza. Magyarország Alaptörvényének tizenhatodik módosítása (Magyar Közlöny 2026/74., hatályos 2026. június 20-tól) — kimondja, hogy a közfeladatot ellátó közérdekű vagyonkezelő alapítványok megszűnésekor az állami eredetű vagyon ingyenesen visszaszáll az államra. 2026. évi XVIII. törvény (Magyar Közlöny 2026/80.) — a Mathias Corvinus Collegium Alapítvány a 2021. évi IX. törvény új 2. mellékletének (\"közfeladatként felsőoktatási tevékenységet nem ellátó alapítványok\") 13. tételeként szerepel; a nyilvántartó bíróság 2026. augusztus 31-i hatállyal törli az alapítványt, vagyona visszaszáll az államra. Még nem következett be. 1226/2026. (VII. 14.) Korm. határozat (MK 2026/89.) — a Miniszterelnökséget vezető miniszter döntött az MCC Alapítvány 2026. július 31-i hatályú megszüntetéséről; közfeladatait az oktatási és gyermekügyi miniszter, ill. a társadalmi kapcsolatokért és kultúráért felelős miniszter veszi át (2026. aug. 31-ig); elszámolási biztos: Veres Ildikó; az MCC tulajdonában lévő gazdasági társaságokban az állam nevében a pénzügyminiszter (ill. ingatlanfejlesztők esetén a közlekedési és beruházási miniszter) gyakorolja a tulajdonosi jogokat. Figyelni kell a 2026.07.31-i tényleges megszűnést és a vagyon visszavételét.",
+    "note": "T/51 törvényjavaslat benyújtva (2026. máj. 20.) — az Alaptörvény-módosítás az MCC részére juttatott állami vagyon visszavételét is tartalmazza. Magyarország Alaptörvényének tizenhatodik módosítása (Magyar Közlöny 2026/74., hatályos 2026. június 20-tól) — kimondja, hogy a közfeladatot ellátó közérdekű vagyonkezelő alapítványok megszűnésekor az állami eredetű vagyon ingyenesen visszaszáll az államra. 2026. évi XVIII. törvény (Magyar Közlöny 2026/80.) — a Mathias Corvinus Collegium Alapítvány a 2021. évi IX. törvény új 2. mellékletének (\"közfeladatként felsőoktatási tevékenységet nem ellátó alapítványok\") 13. tételeként szerepel; a nyilvántartó bíróság 2026. augusztus 31-i hatállyal törli az alapítványt, vagyona visszaszáll az államra. Még nem következett be. 1226/2026. (VII. 14.) Korm. határozat (MK 2026/89.) — a Miniszterelnökséget vezető miniszter döntött az MCC Alapítvány 2026. július 31-i hatályú megszüntetéséről; közfeladatait az oktatási és gyermekügyi miniszter, ill. a társadalmi kapcsolatokért és kultúráért felelős miniszter veszi át (2026. aug. 31-ig); elszámolási biztos: Veres Ildikó; az MCC tulajdonában lévő gazdasági társaságokban az állam nevében a pénzügyminiszter (ill. ingatlanfejlesztők esetén a közlekedési és beruházási miniszter) gyakorolja a tulajdonosi jogokat. Figyelni kell a 2026.07.31-i tényleges megszűnést és a vagyon visszavételét. 1238/2026. (VII. 31.) Korm. határozat (MK 2026/103.) — az 1226/2026. Korm. hat. módosítása: az elszámolási biztos neve dr. Föleki Tamásról Veres Ildikóra változik (68., 84., 93. pont).",
     "isdone": false,
     "donedate": null,
     "deadline": "2030-03-30",
@@ -755,7 +756,8 @@
     "deadline": "2036-12-31",
     "tags": [
       "közlekedés"
-    ]
+    ],
+    "note": "2026. évi XXXVII. törvény (MK 2026/102., hatályos 2026-07-31) — Gördülőállomány-kezelő Társaság és Országos Közlekedésszervező jogi kereteinek megteremtése az RRF közlekedési forrásainak felhasználásához; vasúti személyszállítási járművek EU-forrásból való korszerűsítéséhez szükséges szervezeti és jogi feltételek."
   },
   {
     "id": 50,
@@ -859,7 +861,8 @@
     "tags": [
       "energia",
       "környezet"
-    ]
+    ],
+    "note": "2026. évi XXXVI. törvény (MK 2026/102., hatályos 2026-07-31) — RRF-mérföldkőnek megfelelő energetikai reform: (1) szélerőmű beruházások engedélyezési eljárásának egyszerűsítése a megújuló energia részarány növelése érdekében; (2) geotermikus energia engedélyezési rendszer egyszerűsítése (Geotermikus Energia Bizottság megszüntetése, koncessziós jogadomány eltörlése); (3) EU energiahatékonysági irányelvek átültetése az épületek közbeszerzésére."
   },
   {
     "id": 59,
