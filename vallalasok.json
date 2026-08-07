@@ -81,9 +81,9 @@
     "id": 8,
     "category": "korrupcio_elleni_harc_es_jogallam",
     "todo": "Propaganda megszüntetése a közmédiában — a hírszolgáltatás objektívvé tételéig történő felfüggesztése",
-    "note": "1146/2026. (V. 14.) Korm. határozat — a közmédia működésének felülvizsgálatáról döntött a kormány. 95/2026. (VI. 18.) Korm. rendelet — a Nemzeti Kommunikációs Hivatal (NKOM) addigi kötelező, centralizált kormányzati kommunikációs közbeszerzési rendszerét önkéntessé tette, és tilalmat rendelt el a hatályban lévő keretmegállapodások alapján új beszerzésekre — megszünteti az NKOM-on keresztüli állami hirdetési pénzek átcsatornázásának addigi rendszerét. 2026. évi XXI. törvény (Magyar Közlöny 2026/80.) — lásd id 9 (új médiatörvény) note.",
-    "isdone": false,
-    "donedate": null,
+    "note": "1146/2026. (V. 14.) Korm. határozat — a közmédia működésének felülvizsgálatáról döntött a kormány. 95/2026. (VI. 18.) Korm. rendelet — a Nemzeti Kommunikációs Hivatal (NKOM) addigi kötelező, centralizált kormányzati kommunikációs közbeszerzési rendszerét önkéntessé tette, és tilalmat rendelt el a hatályban lévő keretmegállapodások alapján új beszerzésekre — megszünteti az NKOM-on keresztüli állami hirdetési pénzek átcsatornázásának addigi rendszerét. 2026. évi XXI. törvény (Magyar Közlöny 2026/80.) — lásd id 9 (új médiatörvény) note. 2026. július 7-én az M1 képernyője elsötétült és a Kossuth Rádió elhallgatott — a közmédia hírszolgáltatása felfüggesztve (forrás: portfolio.hu, 2026-07-07).",
+    "isdone": true,
+    "donedate": "2026-07-07",
     "deadline": "2030-03-30",
     "tags": [
       "média",
