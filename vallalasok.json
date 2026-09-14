@@ -440,8 +440,8 @@
   {
     "id": 85,
     "category": "oktatas_es_tudomany",
-    "todo": "Pedagógusstátusz törvény eltörlése",
-    "note": "Az első 100 napos vállalások között szerepelt (határidő: 2026. augusztus 17.). 1172/2026. (V. 26.) Korm. határozat — a köznevelésben foglalkoztatottak kollektív jogainak helyreállításáról döntött a kormány, beleértve a pedagógusok sztrájkjogának és szakszervezeti jogainak visszaállítását. 2026. évi XXVI. törvény (Magyar Közlöny 2026/88., az Országgyűlés 2026. július 7-én fogadta el, hatályos 2026. július 11-től) — hatályon kívül helyezi a pedagógusok teljesítményértékelésről szóló 18/2024. (IV. 4.) BM rendeletet (a korábbi Fidesz-kormány által bevezetett teljesítményértékelési rendszert), és átmeneti rendelkezésként kimondja, hogy a 2025/2026-os tanévben a munkáltató nem folytatja le a 2023. évi LII. törvény (pedagógusok új életpályája) szerinti teljesítményértékelést. A 2023. évi LII. törvény (Pedagógusstátusz-törvény) maga ezzel még nem lett eltörölve — a törvény érdemi módosítása/hatályon kívül helyezése következő lépés. 2026. évi XLVII. törvény (MK 2026/114., hatályos 2026-08-20) — a közneveléssel kapcsolatos egyes törvények módosítása: (1) KOMT (Közalkalmazottak Országos Munkaügyi Tanácsa) ágazatközi érdekegyeztetési fórum szerepe megerősítve; (2) pedagógiai program, SZMSZ, éves munkaterv döntési joga visszakerül a nevelőtestülethez (igazgató hagyja jóvá); (3) igazgatói munkáltatói jogkörök bővítése a tankerületi kötvénnyel szemben; (4) 2023. évi LII. törvény (Péétv.) 17. §-ának módosítása. Az első 100 napos határidő (2026-08-17) betartva. A Pedagógusstátusz-törvény (2023. évi LII. tv.) teljes eltörlése még nem történt meg — érdemi módosítás.",
+    "todo": "A 2023. évi LII. törvény (Pedagógusstátusz-törvény) teljes hatályon kívül helyezése",
+    "note": "Az első 100 napos vállalások között szerepelt (határidő: 2026. augusztus 17.). A 2023. évi LII. törvény (Pedagógusstátusz-törvény / Péétv.) érdemi módosítása részben megtörtént (Péétv. 17. §), de maga a törvény nem lett teljes egészében hatályon kívül helyezve. Az elvégzett részlépések (teljesítményértékelés eltörlése, autonómia visszaállítása) külön vállalásba kerültek (id 100).",
     "isdone": false,
     "donedate": null,
     "deadline": "2026-08-17",
@@ -1168,6 +1168,19 @@
     "tags": [
       "adó",
       "egészségügy"
+    ]
+  },
+  {
+    "id": 100,
+    "category": "oktatas_es_tudomany",
+    "todo": "Pedagógusok teljesítményértékelési rendszerének eltörlése és szakmai autonómiájának visszaállítása",
+    "note": "1172/2026. (V. 26.) Korm. határozat — a köznevelésben foglalkoztatottak kollektív jogainak helyreállítása: pedagógusok sztrájkjogának és szakszervezeti jogainak visszaállítása. 2026. évi XXVI. törvény (MK 2026/88., hatályos 2026-07-11) — hatályon kívül helyezi a pedagógusok teljesítményértékelésről szóló 18/2024. (IV. 4.) BM rendeletet; a 2025/2026-os tanévben nem folytatható le a Péétv. szerinti teljesítményértékelés. 2026. évi XLVII. törvény (MK 2026/114., hatályos 2026-08-20) — KOMT érdekegyeztetési fórum megerősítve; pedagógiai program, SZMSZ, éves munkaterv döntési joga visszakerül a nevelőtestülethez; igazgatói munkáltatói jogkörök bővítve; Péétv. 17. §-a módosítva. Az első 100 napos határidő (2026-08-17) betartva.",
+    "isdone": true,
+    "donedate": "2026-08-20",
+    "deadline": "2026-08-17",
+    "tags": [
+      "oktatás",
+      "100 nap"
     ]
   }
 ]
