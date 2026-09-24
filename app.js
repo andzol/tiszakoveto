@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   loadPromises();
+  loadMerleg();
   setupFilters();
   setupStatClicks();
   setupSearch();
@@ -122,6 +123,44 @@ function classifyItem(item) {
     if (dl < new Date()) return 'expired';
   }
   return 'pending';
+}
+
+// ─── Rendeletmérleg ──────────────────────────────────────────────────
+async function loadMerleg() {
+  const lists = {
+    helyes: document.getElementById('merleg-helyes'),
+    helytelen: document.getElementById('merleg-helytelen'),
+  };
+  if (!lists.helyes || !lists.helytelen) return;
+  try {
+    const res = await fetch('/merleg.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const items = (await res.json()).sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
+    for (const [verdict, ul] of Object.entries(lists)) {
+      const group = items.filter(i => i.verdict === verdict);
+      ul.innerHTML = group.length
+        ? group.map(renderMerlegItem).join('')
+        : '<li class="merleg-empty">Hamarosan — az értékeléseket folyamatosan bővítjük.</li>';
+    }
+  } catch (err) {
+    lists.helytelen.innerHTML = `<li class="merleg-empty">Hiba az értékelések betöltésekor: ${escHtml(err.message)}</li>`;
+  }
+}
+
+function renderMerlegItem(item) {
+  const date = fmtDate(item.date);
+  const safeUrl = /^https?:\/\//.test(item.source?.url ?? '') ? item.source.url : '';
+  const source = safeUrl
+    ? `<a class="merleg-source" href="${escHtml(safeUrl)}" target="_blank" rel="noopener">${escHtml(item.source.label || 'Forrás')}</a>`
+    : '';
+  const reasons = (item.reasons ?? []).map(r => `<li>${escHtml(r)}</li>`).join('');
+  return `
+    <li class="merleg-item">
+      <h4 class="merleg-item-title">${escHtml(item.title)}</h4>
+      <p class="merleg-meta">${date ? `<span>${date}</span>` : ''}${source}</p>
+      <p class="merleg-summary">${escHtml(item.summary)}</p>
+      ${reasons ? `<details class="merleg-why"><summary>Miért?</summary><ol>${reasons}</ol>${item.counterpoint ? `<p class="merleg-counter">${escHtml(item.counterpoint)}</p>` : ''}</details>` : ''}
+    </li>`;
 }
 
 // ─── Highlights ──────────────────────────────────────────────────────

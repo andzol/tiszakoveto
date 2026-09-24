@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "verdict": "helytelen",
+    "title": "Dízelautó-tulajdonosok havi 5 000 Ft-os támogatása",
+    "date": "2026-09-11",
+    "summary": "A kormány 2026 szeptember–decemberre havi 5 000 Ft-ot (összesen 20 000 Ft-ot) utal a legfeljebb 150 lóerős, 2026. január 1-jén nyilvántartott dízel személyautók magántulajdonosainak — személyenként egy autóra, igénylés nélkül, a Havária Alapból.",
+    "reasons": [
+      "Nem rászorultsági alapú: jövedelemtől függetlenül jár, a 150 lóerős határ nem szociális szűrő. Akinek nincs autója — jellemzően a legszegényebb háztartások —, semmit sem kap, pedig a közös költségvetésen keresztül ő is fizeti.",
+      "Önkényes megkülönböztetés: a benzines autósokat, a tömegközlekedéssel ingázókat ugyanúgy sújtja a drágulás, mégis kimaradnak. Egyetlen üzemanyagtípus tulajdonosai kapnak kiváltságot.",
+      "Nem kompenzáció, hanem jövedelemtranszfer: a fogyasztástól független, ugyanannyi jár annak, aki havonta 20 litert tankol, mint annak, aki 200-at — a támogatás elszakad a tényleges tehertől.",
+      "Rossz jelzés: a magasabb nitrogén-oxid- és részecskekibocsátású dízel járműpark fenntartását jutalmazza, a fosszilis üzemanyag-fogyasztást támogatja az uniós dekarbonizációs irány ellenében.",
+      "Van jobb eszköz: rászorultsági alapú megélhetési támogatás, a vidéki ingázók távolság-alapú kompenzációja vagy tömegközlekedési bérletkedvezmény ugyanebből a keretből célzottabban segítene."
+    ],
+    "counterpoint": "Ami mellette szól: a hatósági árral szemben nem torzítja a kútárakat és nem okoz ellátási hiányt. Ettől azonban még rosszul célzott.",
+    "source": {
+      "label": "Forrás: Portfolio",
+      "url": "https://www.portfolio.hu/gazdasag/20260911/magyar-peter-bejelentette-a-dizeltamogatas-reszleteit-862110"
+    }
+  }
+]
