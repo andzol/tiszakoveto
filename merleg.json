@@ -2,11 +2,11 @@
   {
     "id": 1,
     "verdict": "helytelen",
-    "title": "Dízelautó-tulajdonosok havi 5 000 Ft-os támogatása",
-    "date": "2026-09-11",
-    "summary": "A kormány 2026 szeptember–decemberre havi 5 000 Ft-ot (összesen 20 000 Ft-ot) utal a legfeljebb 150 lóerős, 2026. január 1-jén nyilvántartott dízel személyautók magántulajdonosainak — személyenként egy autóra, igénylés nélkül, a Havária Alapból.",
+    "title": "Dízelautó-tulajdonosok 20 000 Ft-os támogatása",
+    "date": "2026-09-18",
+    "summary": "A 146/2026. (IX. 18.) Korm. rendelet alapján a legfeljebb 110 kW-os (kb. 150 lóerős) dízel személyautók magánszemély üzembentartói 2026-ban 20 000 Ft-ot kapnak négy részletben (szept. 30., okt. 30., nov. 13., dec. 7.) — személyenként egy autóra, igénylés nélkül, a központi költségvetésből.",
     "reasons": [
-      "Nem rászorultsági alapú: jövedelemtől függetlenül jár, a 150 lóerős határ nem szociális szűrő. Akinek nincs autója — jellemzően a legszegényebb háztartások —, semmit sem kap, pedig a közös költségvetésen keresztül ő is fizeti.",
+      "Nem rászorultsági alapú: jövedelemtől függetlenül jár, a 110 kW-os határ nem szociális szűrő. Akinek nincs autója — jellemzően a legszegényebb háztartások —, semmit sem kap, pedig a közös költségvetésen keresztül ő is fizeti.",
       "Önkényes megkülönböztetés: a benzines autósokat, a tömegközlekedéssel ingázókat ugyanúgy sújtja a drágulás, mégis kimaradnak. Egyetlen üzemanyagtípus tulajdonosai kapnak kiváltságot.",
       "Nem kompenzáció, hanem jövedelemtranszfer: a fogyasztástól független, ugyanannyi jár annak, aki havonta 20 litert tankol, mint annak, aki 200-at — a támogatás elszakad a tényleges tehertől.",
       "Rossz jelzés: a magasabb nitrogén-oxid- és részecskekibocsátású dízel járműpark fenntartását jutalmazza, a fosszilis üzemanyag-fogyasztást támogatja az uniós dekarbonizációs irány ellenében.",
@@ -14,8 +14,72 @@
     ],
     "counterpoint": "Ami mellette szól: a hatósági árral szemben nem torzítja a kútárakat és nem okoz ellátási hiányt. Ettől azonban még rosszul célzott.",
     "source": {
-      "label": "Forrás: Portfolio",
-      "url": "https://www.portfolio.hu/gazdasag/20260911/magyar-peter-bejelentette-a-dizeltamogatas-reszleteit-862110"
+      "label": "Magyar Közlöny 2026/135.",
+      "url": "https://magyarkozlony.hu/hivatalos-lapok/7dxE7Xc5RFqsM5zCgGwR6aa443b1d57e2/dokumentumok/999e0568c8f88b96412ad0f1efaf89276043df5b/letoltes"
     }
+  },
+  {
+    "id": 2,
+    "verdict": "helyes",
+    "title": "A javítóintézetek visszakerülnek a gyermekvédelembe",
+    "date": "2026-10-01",
+    "summary": "A 2026. évi LVI. törvény alapján 2026. október 1-jétől a négy javítóintézet (Aszód, Debrecen, Nagykanizsa, Rákospalota) a büntetés-végrehajtás helyett ismét a gyermekvédelmi intézményrendszer része; a forrásokat az 1319/2026. Korm. határozat csoportosítja át.",
+    "reasons": [
+      "A javítóintézetben élők gyerekek: nevelési, pedagógiai, pszichológiai és szociális szükségleteik vannak, amelyeket a gyermekvédelmi szemlélet kezel, nem a büntetés-végrehajtási logika.",
+      "Összhangban van az ENSZ Gyermekjogi Egyezményének elvével, hogy a gyermek legfőbb érdeke a szabadságelvonással járó intézkedéseknél is elsődleges.",
+      "Az újrabeilleszkedés a cél: a nevelés, oktatás és utógondozás erősítése hosszabb távon a társadalomnak is kevesebbe kerül, mint a bűnismétlés."
+    ],
+    "counterpoint": "A siker azon múlik, hogy a maga is válságban lévő gyermekvédelmi rendszer kap-e elég szakembert és forrást.",
+    "source": {
+      "label": "Magyar Közlöny 2026/142.",
+      "url": "https://magyarkozlony.hu/hivatalos-lapok/uSNW6Y9WJAysNHUS6Spp6ab6a94c5900f/dokumentumok/5b71f90401057d3235b96a1ccb274b2807642050/letoltes"
+    }
+  },
+  {
+    "id": 3,
+    "verdict": "helyes",
+    "title": "Nyilvánosak lesznek az állambiztonsági nyilvántartások",
+    "date": "2026-09-18",
+    "summary": "A 2026. évi LI. törvény alapján 2026. október 20-tól a hatos kartonok (a beszervezettek nyilvántartása), a B-naplók és a „H\"-szalag adatai közérdekből nyilvánosak; a Levéltár ezeket kereshetően, díjmentesen, bárki számára elérhetővé teszi a honlapján.",
+    "reasons": [
+      "Információs kárpótlás: a megfigyeltek és leszármazottaik 36 évvel a rendszerváltás után megtudhatják, ki és mit jelentett róluk.",
+      "A közélet átláthatósága: a múlt feltárása nem maradhat néhány kutató vagy politikai döntés kiváltsága, a korábbi kutatási tiltó nyilatkozatok hatályukat vesztik.",
+      "Garanciákkal: az egészségi állapotra, szexuális életre vonatkozó és a megfigyeltekről szóló adatok védettek maradnak, így a nyilvánosság nem megy az áldozatok kárára."
+    ],
+    "counterpoint": "A teljes képhez a ma is minősített iratok felülvizsgálata is kell — ezt a Minősített Iratok Felülvizsgálatát Segítő Tanácsadó Bizottság végzi.",
+    "source": {
+      "label": "Magyar Közlöny 2026/135.",
+      "url": "https://magyarkozlony.hu/hivatalos-lapok/7dxE7Xc5RFqsM5zCgGwR6aa443b1d57e2/dokumentumok/999e0568c8f88b96412ad0f1efaf89276043df5b/letoltes"
+    }
+  },
+  {
+    "id": 4,
+    "verdict": "helyes",
+    "title": "Megszűnik a miniszteri szirénázás",
+    "date": "2026-09-29",
+    "summary": "A 221/2026. Korm. rendelet szerint 2026. szeptember 30-tól a miniszterek közül csak a belügyminiszter közlekedhet megkülönböztető jelzéssel rendőri személyvédelem keretében; a 22/2026. BM rendelet október 29-től a teljes jogosulti kört újraszabályozza és szűkíti.",
+    "reasons": [
+      "Privilégium leépítése: a közút mindenkié, a kék fény a mentőknek, tűzoltóknak és valódi veszélyhelyzetnek jár, nem a politikai kényelemnek.",
+      "Közlekedésbiztonság: a megszaporodott szirénás autók zavarják a közlekedőket, és nehezítik a jogosulatlan használat kiszűrését.",
+      "Nincs költsége, viszont erősíti a közbizalmat abban, hogy a szabályok a vezetőkre is vonatkoznak."
+    ],
+    "counterpoint": "Költségvetési hatása csekély, inkább szimbolikus lépés — de a szimbólumoknak is van jelentésük.",
+    "source": {
+      "label": "Magyar Közlöny 2026/141.",
+      "url": "https://magyarkozlony.hu/hivatalos-lapok/rWNu4mtf9rIaAGUwFUkz6ab29031b588f/dokumentumok/e1be9df27f13839206ab53c419cdd890ca60d0cc/letoltes"
+    }
+  },
+  {
+    "id": 5,
+    "verdict": "helyes",
+    "title": "Iskolakezdési támogatás a rászorulóknak",
+    "date": "2026-07-23",
+    "summary": "A 2026. évi XXXIII. törvény alapján mintegy 400 ezer rászoruló gyermek (rendszeres gyermekvédelmi kedvezményre jogosultak, SNI-s és árva gyerekek stb.) kap 100 000 Ft-ot: 50 000 Ft-ot augusztusban pénzben, 50 000 Ft-ot novemberig iskolaszer-utalványban.",
+    "reasons": [
+      "Célzott: oda jut, ahol a legnagyobb a szükség — szemben a mindenkinek járó, jövedelemtől független juttatásokkal.",
+      "Valós, előre látható kiadást fedez: az iskolakezdés a szegény családoknak évről évre komoly teher.",
+      "A gyerekek esélyeibe fektet: a felszereltség hiánya ne legyen akadálya a tanulásnak."
+    ],
+    "counterpoint": "Egyszeri juttatás, nem tartós jövedelemtámogatás; a fele csak iskolaszerre költhető utalvány."
   }
 ]
