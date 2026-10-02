@@ -139,15 +139,32 @@ async function loadMerleg() {
     for (const [verdict, ul] of Object.entries(lists)) {
       const group = items.filter(i => i.verdict === verdict);
       ul.innerHTML = group.length
-        ? group.map(renderMerlegItem).join('')
+        ? group.map((item, i) => renderMerlegItem(item, i >= MERLEG_VISIBLE)).join('')
         : '<li class="merleg-empty">Hamarosan — az értékeléseket folyamatosan bővítjük.</li>';
+      if (group.length > MERLEG_VISIBLE) addMerlegToggle(ul, group.length - MERLEG_VISIBLE);
     }
   } catch (err) {
     lists.helytelen.innerHTML = `<li class="merleg-empty">Hiba az értékelések betöltésekor: ${escHtml(err.message)}</li>`;
   }
 }
 
-function renderMerlegItem(item) {
+const MERLEG_VISIBLE = 2;
+
+function addMerlegToggle(ul, hiddenCount) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'merleg-more';
+  const update = open => {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Kevesebb megjelenítése' : `Továbbiak megjelenítése (${hiddenCount})`;
+    ul.querySelectorAll('.merleg-item-extra').forEach(li => { li.hidden = !open; });
+  };
+  btn.addEventListener('click', () => update(btn.getAttribute('aria-expanded') !== 'true'));
+  update(false);
+  ul.after(btn);
+}
+
+function renderMerlegItem(item, extra = false) {
   const date = fmtDate(item.date);
   const safeUrl = /^https?:\/\//.test(item.source?.url ?? '') ? item.source.url : '';
   const source = safeUrl
@@ -155,7 +172,7 @@ function renderMerlegItem(item) {
     : '';
   const reasons = (item.reasons ?? []).map(r => `<li>${escHtml(r)}</li>`).join('');
   return `
-    <li class="merleg-item">
+    <li class="merleg-item${extra ? ' merleg-item-extra' : ''}"${extra ? ' hidden' : ''}>
       <h4 class="merleg-item-title">${escHtml(item.title)}</h4>
       <p class="merleg-meta">${date ? `<span>${date}</span>` : ''}${source}</p>
       <p class="merleg-summary">${escHtml(item.summary)}</p>
