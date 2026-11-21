@@ -34,5 +34,22 @@
       "label": "Magyar Közlöny 2026/141.",
       "url": "https://magyarkozlony.hu/hivatalos-lapok/rWNu4mtf9rIaAGUwFUkz6ab29031b588f/dokumentumok/e1be9df27f13839206ab53c419cdd890ca60d0cc/letoltes"
     }
+  },
+  {
+    "id": 5,
+    "verdict": "helyes",
+    "title": "December 24. állandó munkaszüneti nap lesz, az üzletek zárva tartanak",
+    "date": "2026-11-13",
+    "summary": "A 2026. évi LXXII. törvény (az Országgyűlés november 3-án fogadta el, november 14-től hatályos) december 24-ét a munka törvénykönyvében és a közszolgálati törvényekben állandó munkaszüneti nappá teszi; az üzletek – törvényben meghatározott kivételekkel – zárva tartanak. A szabály már 2026 karácsonyán érvényes.",
+    "reasons": [
+      "Azoknak is pihenőnapot ad, akiknek eddig nem jutott: a kereskedelemben dolgozók szenteste délelőttjén is a pult mögött álltak, most ők is a családjukkal lehetnek.",
+      "A pihenőnap mindenkinek egyformán jár, jövedelemtől és munkahelytől függetlenül; a nap jellegét a törvény vallási meggyőződéstől függetlenül a családi és közösségi együttlét napjaként határozza meg.",
+      "Csekély a gazdasági veszteség: december 24-én a forgalom amúgy is a délelőttre szorult, a bevásárlás előrehozható."
+    ],
+    "counterpoint": "Ami ellene szól: egy újabb munkaszüneti nap kiesett termelést jelent, és a kereskedőknek egy forgalmas napot vesz el. Az egészségügyben, közlekedésben és más folyamatos munkarendű ágazatokban dolgozók ugyanúgy dolgoznak.",
+    "source": {
+      "label": "Magyar Közlöny 2026/171.",
+      "url": "https://magyarkozlony.hu/hivatalos-lapok/eVPwo1zo3oc7qzap5LKe6aee410272328/dokumentumok/5f99848e5821a00d49f56fdd5709bfec0f4532b4/letoltes"
+    }
   }
 ]
